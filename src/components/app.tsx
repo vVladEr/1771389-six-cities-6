@@ -1,7 +1,11 @@
 import MainPage from './pages/main/main'
 
-function App() {
-    return (<MainPage cardsAmount={2}/>);
+type AppPops = {
+    cardsAmount : number
+}
+
+function App({cardsAmount} : AppPops) {
+    return (<MainPage cardsAmount={cardsAmount}/>);
 }
 
 export default App;
