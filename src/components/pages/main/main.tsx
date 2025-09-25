@@ -1,7 +1,11 @@
 import OfferCard from "./apartment-card";
 import CardType from "./cardType";
 
-function MainPage() : JSX.Element {
+type MainPageProps = {
+    cardsAmount : number
+}
+
+function MainPage({cardsAmount} : MainPageProps) : JSX.Element {
     return(
     <html lang="en">
     <head>
@@ -102,6 +106,15 @@ function MainPage() : JSX.Element {
                     </ul>
                 </form>
                 <div className="cities__places-list places__list tabs__content">
+                    {
+                        Array<JSX.Element>(cardsAmount).fill(OfferCard({
+                            priceInEuros: 120, 
+                            imageName: "apartment-01.jpg",
+                            description: 'Beautiful &amp; luxurious apartment at great location',
+                            cardType: CardType.Apartment
+                        }
+                        ))
+                    }
                     <OfferCard 
                         priceInEuros={120} 
                         imageName="apartment-01.jpg"

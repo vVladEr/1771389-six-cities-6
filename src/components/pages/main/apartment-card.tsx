@@ -1,6 +1,6 @@
 import CardInfo from "./cardInfo";
 
-function OfferCard({cardType, priceInEuros, imageName, description} : CardInfo) : JSX.Element {
+function OfferCard(card : CardInfo) : JSX.Element {
     return(
         <article className="cities__card place-card">
                     <div className="place-card__mark">
@@ -8,13 +8,13 @@ function OfferCard({cardType, priceInEuros, imageName, description} : CardInfo) 
                     </div>
                     <div className="cities__image-wrapper place-card__image-wrapper">
                         <a href="#">
-                        <img className="place-card__image" src={"img/" + imageName} width="260" height="200" alt="Place image"/>
+                        <img className="place-card__image" src={"img/" + card.imageName} width="260" height="200" alt="Place image"/>
                         </a>
                     </div>
                     <div className="place-card__info">
                         <div className="place-card__price-wrapper">
                         <div className="place-card__price">
-                            <b className="place-card__price-value">&euro;{priceInEuros} 120</b>
+                            <b className="place-card__price-value">&euro;{card.priceInEuros} 120</b>
                             <span className="place-card__price-text">&#47;&nbsp;night</span>
                         </div>
                         <button className="place-card__bookmark-button button" type="button">
@@ -33,9 +33,9 @@ function OfferCard({cardType, priceInEuros, imageName, description} : CardInfo) 
                         </div>
                         </div>
                         <h2 className="place-card__name">
-                        <a href="#">{description}</a>
+                        <a href="#">{card.description}</a>
                         </h2>
-                        <p className="place-card__type">{cardType}</p>
+                        <p className="place-card__type">{card.cardType}</p>
                     </div>
                     </article>
     );
