@@ -1,3 +1,6 @@
+import OfferCard from "./apartment-card";
+import CardType from "./cardType";
+
 function MainPage() : JSX.Element {
     return(
     <html lang="en">
@@ -99,6 +102,12 @@ function MainPage() : JSX.Element {
                     </ul>
                 </form>
                 <div className="cities__places-list places__list tabs__content">
+                    <OfferCard 
+                        priceInEuros={120} 
+                        imageName="apartment-01.jpg"
+                        description = 'Beautiful &amp; luxurious apartment at great location'
+                        cardType={CardType.Apartment}
+                    />
                     <article className="cities__card place-card">
                     <div className="place-card__mark">
                         <span>Premium</span>
