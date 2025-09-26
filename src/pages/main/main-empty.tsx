@@ -1,4 +1,4 @@
-function MainEmpty() : JSX.Element {
+function MainEmptyPage() : JSX.Element {
   return(
     <html lang="en">
       <head>
@@ -95,4 +95,4 @@ function MainEmpty() : JSX.Element {
     </html>);
 }
 
-export default MainEmpty;
+export default MainEmptyPage;
