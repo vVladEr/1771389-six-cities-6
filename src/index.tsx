@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
 
 const Settings = {
   cardsAmount: 6
-}
+};
 
 root.render(
   <React.StrictMode>

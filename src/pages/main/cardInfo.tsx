@@ -1,4 +1,4 @@
-import CardType from "./cardType";
+import CardType from './cardType';
 
 type CardInfo = {
     cardType: CardType;
@@ -7,4 +7,4 @@ type CardInfo = {
     description: string;
 }
 
-export default CardInfo
+export default CardInfo;

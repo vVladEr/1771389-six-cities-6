@@ -3,4 +3,4 @@ enum CardType {
     Room = 'Room'
 }
 
-export default CardType
+export default CardType;
