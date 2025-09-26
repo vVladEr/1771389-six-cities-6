@@ -7,7 +7,7 @@ const root = ReactDOM.createRoot(
 );
 
 const Settings = {
-  cardsAmount: 6
+  cardsAmount: 8
 };
 
 root.render(

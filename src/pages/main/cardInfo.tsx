@@ -5,6 +5,7 @@ type CardInfo = {
     priceInEuros: number;
     imageName: string;
     description: string;
+    isPremium : boolean;
 }
 
 export default CardInfo;

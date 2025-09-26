@@ -1,11 +1,14 @@
 import CardInfo from './cardInfo';
 
-function OfferCard(card : CardInfo) : JSX.Element {
+function RentCard(card : CardInfo) : JSX.Element {
   return(
     <article className="cities__card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+      {
+        card.isPremium &&
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={`img/${ card.imageName}`} width="260" height="200" alt="Place image"/>
@@ -43,4 +46,4 @@ function OfferCard(card : CardInfo) : JSX.Element {
   );
 }
 
-export default OfferCard;
+export default RentCard;
