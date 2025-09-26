@@ -1,6 +1,8 @@
 enum CardType {
     Apartment = 'Apartment',
-    Room = 'Room'
+    Room = 'Room',
+    House = 'House',
+    Hotel = 'Hotel'
 }
 
 export default CardType;
