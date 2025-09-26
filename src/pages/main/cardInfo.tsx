@@ -6,6 +6,8 @@ type CardInfo = {
     imageName: string;
     description: string;
     isPremium : boolean;
+    isFavorire?: boolean;
+    rating?:number
 }
 
 export default CardInfo;
