@@ -94,3 +94,5 @@ function MainEmpty() : JSX.Element {
       </body>
     </html>);
 }
+
+export default MainEmpty;

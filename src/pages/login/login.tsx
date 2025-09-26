@@ -53,3 +53,5 @@ function LoginPage() : JSX.Element {
     </html>
   );
 }
+
+export default LoginPage;

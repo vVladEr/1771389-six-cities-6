@@ -191,3 +191,5 @@ function FavoritesPage() : JSX.Element {
     </html>
   );
 }
+
+export default FavoritesPage;
