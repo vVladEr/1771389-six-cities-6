@@ -7,7 +7,7 @@ type CardInfo = {
     description: string;
     isPremium : boolean;
     isFavorire?: boolean;
-    rating?:number
+    rating?: number;
 }
 
 export default CardInfo;
