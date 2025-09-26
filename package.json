@@ -6,6 +6,7 @@
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx",
+    "lintFix": "eslint src --ext ts,tsx --fix",
     "preview": "vite preview",
     "test": "vitest --passWithNoTests"
   },
