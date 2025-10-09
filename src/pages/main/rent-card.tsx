@@ -1,4 +1,4 @@
-import CardInfo from './cardInfo';
+import CardInfo from './card-info';
 
 function RentCard(card : CardInfo) : JSX.Element {
   return(

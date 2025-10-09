@@ -1,5 +1,5 @@
-import RentCard from './rentCard';
-import CardType from './cardType';
+import RentCard from './rent-card';
+import CardType from './card-type';
 
 type MainPageProps = {
     cardsAmount : number;
@@ -7,15 +7,6 @@ type MainPageProps = {
 
 function MainPage({cardsAmount} : MainPageProps) : JSX.Element {
   return(
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8"/>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>6 cities</title>
-        <link rel="stylesheet" href="css/main.css"/>
-      </head>
-
       <body>
         <div className="page page--gray page--main">
           <header className="header">
@@ -107,14 +98,15 @@ function MainPage({cardsAmount} : MainPageProps) : JSX.Element {
                   </form>
                   <div className="cities__places-list places__list tabs__content">
                     {
-                      Array<JSX.Element>(cardsAmount).fill(RentCard({
-                        priceInEuros: 120,
-                        imageName: 'apartment-01.jpg',
-                        description: 'Beautiful & luxurious apartment at great location',
-                        cardType: CardType.Apartment,
-                        isPremium : true
-                      }
-                      ))
+
+                      [...Array(cardsAmount)].map((_) =>
+                      <RentCard
+                        priceInEuros= {120}
+                        imageName = {'apartment-01.jpg'}
+                        description = {'Beautiful & luxurious apartment at great location'}
+                        cardType =  {CardType.Apartment}
+                        isPremium = {true}
+                      />)
                     }
                   </div>
                 </section>
@@ -126,7 +118,6 @@ function MainPage({cardsAmount} : MainPageProps) : JSX.Element {
           </main>
         </div>
       </body>
-    </html>
   );
 }
 

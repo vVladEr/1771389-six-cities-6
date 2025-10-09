@@ -1,4 +1,4 @@
-import CardType from './cardType';
+import CardType from './card-type';
 
 type CardInfo = {
     cardType: CardType;
