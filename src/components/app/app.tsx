@@ -1,10 +1,11 @@
 import MainPage from '../../pages/main/main';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import { AppRoute } from './const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import LoginPage from '../../pages/login/login';
 import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
+import PrivateRoute from '../private-route';
 
 type AppPops = {
     cardsAmount : number;
@@ -24,7 +25,11 @@ function App({cardsAmount} : AppPops) {
       />
       <Route
         path={AppRoute.Favorites}
-        element={<FavoritesPage />}
+        element={
+        <PrivateRoute
+          authorizationStatus={AuthorizationStatus.NoAuth}>
+          <FavoritesPage />
+        </PrivateRoute>}
       />
       <Route
         path={AppRoute.Offer}
