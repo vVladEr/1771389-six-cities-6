@@ -1,7 +1,7 @@
 import { Offer } from "../models/offer";
 
 
-const Offers : Offer[] = [
+export const Offers : Offer[] = [
   {
     "id": "6b9e3183-aadd-4bba-a952-855a2035ebef",
     "title": "House in countryside",

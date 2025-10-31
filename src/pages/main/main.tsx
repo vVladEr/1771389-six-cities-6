@@ -1,11 +1,13 @@
 import RentCard from './rent-card';
-import CardType from './card-type';
+import { Offer } from '../../models/offer';
+import { RentOfferList } from './rent-offer-list';
 
 type MainPageProps = {
     cardsAmount : number;
+    offers: Offer[]
 }
 
-function MainPage({cardsAmount} : MainPageProps) : JSX.Element {
+function MainPage({cardsAmount, offers} : MainPageProps) : JSX.Element {
   return(
     <body>
       <div className="page page--gray page--main">
@@ -96,20 +98,7 @@ function MainPage({cardsAmount} : MainPageProps) : JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <div className="cities__places-list places__list tabs__content">
-                  {
-
-                    [...Array<JSX.Element>(cardsAmount)].fill(
-                      <RentCard
-                        priceInEuros= {120}
-                        imageName = {'apartment-01.jpg'}
-                        description = {'Beautiful & luxurious apartment at great location'}
-                        cardType = {CardType.Apartment}
-                        isPremium
-                      />
-                    )
-                  }
-                </div>
+                <RentOfferList offers={offers}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map"></section>
