@@ -1,15 +1,15 @@
 import React from "react";
-import { Offer } from "../../models/offer";
+import { CardOffer } from "../../models/offers";
 import RentCard from "./rent-card";
 
 
 type OffersProps = {
-  offers: Offer[];
+  offers: CardOffer[];
 }
 
 
 export function RentOfferList({offers} : OffersProps): JSX.Element {
-  const [activeOffer, setActiveOffer] = React.useState("");
+  const [activeOfferId, setActiveOffer] = React.useState("");
   return(
     <div className="cities__places-list places__list tabs__content">
       {

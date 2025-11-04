@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { Offers } from './mocks/offers';
+import { CardOffers } from './mocks/card-offers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,11 +9,11 @@ const root = ReactDOM.createRoot(
 
 const Settings = {
   cardsAmount: 8,
-  offers: Offers
+  cardOffers: CardOffers
 };
 
 root.render(
   <React.StrictMode>
-    <App offers={Settings.offers}/>
+    <App offers={Settings.cardOffers}/>
   </React.StrictMode>
 );

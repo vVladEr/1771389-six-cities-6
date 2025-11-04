@@ -1,9 +1,9 @@
-import { Offer } from "../../models/offer";
+import { CardOffer } from "../../models/offers";
 import { FavoriteCard } from "./favourite-card";
 
 type FavoritesCityPlacesListProps = {
   cityName: string,
-  favoritesCityPlaces : Offer[]
+  favoritesCityPlaces : CardOffer[]
 }
 
 

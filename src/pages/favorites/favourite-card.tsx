@@ -1,8 +1,8 @@
-import { Offer } from "../../models/offer";
+import { CardOffer } from "../../models/offers";
 
 
 type FavoriteCardProps = {
-  offer: Offer
+  offer: CardOffer
 }
 
 export function FavoriteCard({offer}: FavoriteCardProps):JSX.Element {
@@ -16,7 +16,7 @@ export function FavoriteCard({offer}: FavoriteCardProps):JSX.Element {
       }
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={`img/${offer.previewImage}`} width="150" height="110" alt="Place image"/>
+          <img className="place-card__image" src={offer.previewImage} width="150" height="110" alt="Place image"/>
         </a>
       </div>
       <div className="favorites__card-info place-card__info">

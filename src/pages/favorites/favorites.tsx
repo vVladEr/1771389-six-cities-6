@@ -1,11 +1,11 @@
-import { Offer } from "../../models/offer";
+import { CardOffer } from "../../models/offers";
 import { FavoritesCityPlacesList } from "./favorites-city-places-list";
 
 type FavoritesPageProps = {
-  favoriteOffers : Offer[];
+  favoriteOffers : CardOffer[];
 }
 
-function GetUniqueCityNames(offers: Offer[]): string[] {
+function GetUniqueCityNames(offers: CardOffer[]): string[] {
   let names = offers.map(offer => offer.city.name);
   return names.filter((el, ind) => ind === names.indexOf(el)).sort();
 }

@@ -1,7 +1,7 @@
-import { Offer } from '../../models/offer';
+import { CardOffer } from '../../models/offers';
 
 type RentCardProps = {
-    offer: Offer
+    offer: CardOffer
     onMouseOver: () => void
     onMouseLeave: () => void
 }
@@ -17,7 +17,7 @@ function RentCard({offer, onMouseOver, onMouseLeave} : RentCardProps) : JSX.Elem
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={`img/${ offer.previewImage}`} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={ offer.previewImage} width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">

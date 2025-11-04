@@ -1,8 +1,8 @@
-import { Offer } from '../../models/offer';
+import { CardOffer } from '../../models/offers';
 import { RentOfferList } from './rent-offer-list';
 
 type MainPageProps = {
-    offers: Offer[]
+    offers: CardOffer[]
 }
 
 function MainPage({offers} : MainPageProps) : JSX.Element {

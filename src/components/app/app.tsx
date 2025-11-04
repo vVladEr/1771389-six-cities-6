@@ -6,10 +6,10 @@ import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { Offer } from '../../models/offer';
+import { CardOffer } from '../../models/offers';
 
 type AppPops = {
-    offers: Offer[];
+    offers: CardOffer[];
 }
 
 function App({offers} : AppPops) {
