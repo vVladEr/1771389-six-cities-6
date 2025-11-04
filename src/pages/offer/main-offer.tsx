@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom"
 import { FullOffer } from "../../models/offers"
-import { GetPersentsFromRating, RatingStars } from "../../components/rating/rating";
+import { GetPersentsFromRating} from "../../components/rating/rating";
 
 type MainOfferProps = {
   mainOffer: FullOffer | undefined
@@ -43,7 +43,13 @@ export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
           </button>
         </div>
         <div className="offer__rating rating">
-          <RatingStars rating={mainOffer.rating}/>
+          <div className="offer__stars rating__stars">
+            <span style={{
+              width : `${GetPersentsFromRating(mainOffer.rating)}%`
+            }}
+            />
+            <span className="visually-hidden">Rating</span>
+          </div>
           <span className="offer__rating-value rating__value">{mainOffer.rating}</span>
         </div>
         <ul className="offer__features">

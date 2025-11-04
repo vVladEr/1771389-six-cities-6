@@ -19,19 +19,3 @@ export function GetPersentsFromRating(rating: number) : number
   return 100;
 }
 
-type RatingProps = {
-  rating: number;
-}
-
-export function RatingStars({rating}: RatingProps) : JSX.Element
-{
-  return(
-    <div className="offer__stars rating__stars">
-      <span style={{
-        width : `${GetPersentsFromRating(rating)}%`
-      }}
-      />
-      <span className="visually-hidden">Rating</span>
-    </div>
-  );
-}
