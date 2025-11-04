@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CardOffer } from '../../models/offers';
+import { Rating } from '../../components/rating/rating';
 
 type RentCardProps = {
     offer: CardOffer
@@ -34,12 +35,7 @@ function RentCard({offer, onMouseOver, onMouseLeave} : RentCardProps) : JSX.Elem
             <span className="visually-hidden">To bookmarks</span>
           </button>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <Rating rating={offer.rating}/>
         <h2 className="place-card__name">
           <Link to={`offer/${offer.id}`}>
             {offer.title}
