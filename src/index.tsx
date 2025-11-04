@@ -14,6 +14,6 @@ const Settings = {
 
 root.render(
   <React.StrictMode>
-    <App cardsAmount={Settings.cardsAmount} offers={Settings.offers}/>
+    <App offers={Settings.offers}/>
   </React.StrictMode>
 );

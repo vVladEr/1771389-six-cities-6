@@ -1,13 +1,11 @@
-import RentCard from './rent-card';
 import { Offer } from '../../models/offer';
 import { RentOfferList } from './rent-offer-list';
 
 type MainPageProps = {
-    cardsAmount : number;
     offers: Offer[]
 }
 
-function MainPage({cardsAmount, offers} : MainPageProps) : JSX.Element {
+function MainPage({offers} : MainPageProps) : JSX.Element {
   return(
     <body>
       <div className="page page--gray page--main">

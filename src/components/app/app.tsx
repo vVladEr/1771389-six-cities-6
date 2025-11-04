@@ -9,17 +9,16 @@ import PrivateRoute from '../private-route/private-route';
 import { Offer } from '../../models/offer';
 
 type AppPops = {
-    cardsAmount : number;
     offers: Offer[];
 }
 
-function App({cardsAmount, offers} : AppPops) {
+function App({offers} : AppPops) {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage cardsAmount={cardsAmount} offers={offers}/>}
+          element={<MainPage offers={offers}/>}
         />
         <Route
           path={AppRoute.Login}
@@ -29,9 +28,9 @@ function App({cardsAmount, offers} : AppPops) {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <FavoritesPage />
+              <FavoritesPage favoriteOffers={offers}/>
             </PrivateRoute>
           }
         />
