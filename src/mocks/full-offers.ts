@@ -1,7 +1,7 @@
 import { FullOffer} from "../models/offers";
 
 
-export const Offers : FullOffer[] = [
+export const FullOffers : FullOffer[] = [
   {
     "id": "0a6aea6b-a3d8-417d-971a-045327dc02ef",
     "title": "Penthouse, 4-5 rooms + 5 balconies",
@@ -191,5 +191,51 @@ export const Offers : FullOffer[] = [
     "rating": 2.9,
     "bedrooms": 4,
     "maxAdults": 7
+  },
+  {
+    "id": "32933ed7-926d-4080-a5ce-152d36efc16c",
+    "title": "Tile House",
+    "description": "Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.",
+    "type": "apartment",
+    "price": 129,
+    "images": [
+      "https://14.design.htmlacademy.pro/static/hotel/3.jpg",
+      "https://14.design.htmlacademy.pro/static/hotel/18.jpg",
+      "https://14.design.htmlacademy.pro/static/hotel/1.jpg",
+      "https://14.design.htmlacademy.pro/static/hotel/11.jpg",
+      "https://14.design.htmlacademy.pro/static/hotel/5.jpg",
+      "https://14.design.htmlacademy.pro/static/hotel/15.jpg"
+    ],
+    "city": {
+      "name": "Dusseldorf",
+      "location": {
+        "latitude": 51.225402,
+        "longitude": 6.776314,
+        "zoom": 13
+      }
+    },
+    "location": {
+      "latitude": 51.225402,
+      "longitude": 6.784314,
+      "zoom": 16
+    },
+    "goods": [
+      "Dishwasher",
+      "Air conditioning",
+      "Breakfast",
+      "Washer",
+      "Towels",
+      "Wi-Fi"
+    ],
+    "host": {
+      "isPro": true,
+      "name": "Angelina",
+      "avatarUrl": "https://14.design.htmlacademy.pro/static/host/avatar-angelina.jpg"
+    },
+    "isPremium": true,
+    "isFavorite": false,
+    "rating": 4.5,
+    "bedrooms": 1,
+    "maxAdults": 3
   }
 ]
