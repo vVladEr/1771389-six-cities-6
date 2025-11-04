@@ -2,11 +2,13 @@ import { Offer } from '../../models/offer';
 
 type RentCardProps = {
     offer: Offer
+    onMouseOver: () => void
+    onMouseLeave: () => void
 }
 
-function RentCard({offer} : RentCardProps) : JSX.Element {
+function RentCard({offer, onMouseOver, onMouseLeave} : RentCardProps) : JSX.Element {
   return(
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseEnter={onMouseOver} onMouseLeave={onMouseLeave}>
       {
         offer.isPremium &&
         <div className="place-card__mark">
