@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom"
 import { FullOffer } from "../../models/offers"
-import { Rating } from "../../components/rating/rating";
+import { RatingStars } from "../../components/rating/rating";
 
 type MainOfferProps = {
   mainOffer: FullOffer | undefined
@@ -42,7 +42,11 @@ export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
             <span className="visually-hidden">To bookmarks</span>
           </button>
         </div>
-        <Rating rating={mainOffer.rating}/>
+        <div className="place-card__rating rating">
+        <RatingStars rating={mainOffer.rating}/>
+        <span className="offer__rating-value rating__value">{mainOffer.rating}</span>
+        </div>
+
         <ul className="offer__features">
           <li className="offer__feature offer__feature--entire">
               {mainOffer.type}

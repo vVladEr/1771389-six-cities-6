@@ -23,14 +23,12 @@ type RatingProps = {
   rating: number;
 }
 
-export function Rating({rating}: RatingProps) : JSX.Element
+export function RatingStars({rating}: RatingProps) : JSX.Element
 {
   return(
-    <div className="place-card__rating rating">
-      <div className="place-card__stars rating__stars">
-        <span style={{width: `${GetPersentsFromRating(rating)}%`}}></span>
-        <span className="visually-hidden">Rating</span>
-      </div>
+    <div className="place-card__stars rating__stars">
+      <span style={{width: `${GetPersentsFromRating(rating)}%`}}></span>
+      <span className="visually-hidden">Rating</span>
     </div>
   );
 }

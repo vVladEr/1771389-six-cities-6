@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CardOffer } from "../../models/offers";
-import { Rating } from "../../components/rating/rating";
+import { RatingStars } from "../../components/rating/rating";
 
 
 type FavoriteCardProps = {
@@ -34,7 +34,9 @@ export function FavoriteCard({offer}: FavoriteCardProps):JSX.Element {
             <span className="visually-hidden">In bookmarks</span>
           </button>
         </div>
-        <Rating rating={offer.rating}/>
+        <div className="place-card__rating rating">
+          <RatingStars rating={offer.rating}/>
+        </div>
         <h2 className="place-card__name">
           <Link to={`../offer/${offer.id}`}>
             {offer.title}
