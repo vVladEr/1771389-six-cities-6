@@ -1,9 +1,9 @@
-import { CardOffer } from "../../models/offers";
-import { FavoriteCard } from "./favourite-card";
+import { CardOffer } from '../../models/offers';
+import { FavoriteCard } from './favourite-card';
 
 type FavoritesCityPlacesListProps = {
-  cityName: string,
-  favoritesCityPlaces : CardOffer[]
+  cityName: string;
+  favoritesCityPlaces : CardOffer[];
 }
 
 
@@ -20,7 +20,7 @@ export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): J
       <div className="favorites__places">
         {
           props.favoritesCityPlaces.map(
-            place => <FavoriteCard offer={place}/>
+            (place) => <FavoriteCard offer={place} key={place.id}/>
           )
         }
       </div>

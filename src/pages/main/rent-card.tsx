@@ -3,9 +3,9 @@ import { CardOffer } from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 
 type RentCardProps = {
-    offer: CardOffer
-    onMouseOver: () => void
-    onMouseLeave: () => void
+    offer: CardOffer;
+    onMouseOver: () => void;
+    onMouseLeave: () => void;
 }
 
 function RentCard({offer, onMouseOver, onMouseLeave} : RentCardProps) : JSX.Element {

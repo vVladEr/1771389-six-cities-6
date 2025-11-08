@@ -4,7 +4,7 @@ import { RentOfferList } from './rent-offer-list';
 import { AppRoute } from '../../const';
 
 type MainPageProps = {
-    offers: CardOffer[]
+    offers: CardOffer[];
 }
 
 function MainPage({offers} : MainPageProps) : JSX.Element {

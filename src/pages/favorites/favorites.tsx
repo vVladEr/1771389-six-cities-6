@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../const";
-import { CardOffer } from "../../models/offers";
-import { FavoritesCityPlacesList } from "./favorites-city-places-list";
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { CardOffer } from '../../models/offers';
+import { FavoritesCityPlacesList } from './favorites-city-places-list';
 
 type FavoritesPageProps = {
   favoriteOffers : CardOffer[];
 }
 
 function GetUniqueCityNames(offers: CardOffer[]): string[] {
-  let names = offers.map(offer => offer.city.name);
+  const names = offers.map((offer) => offer.city.name);
   return names.filter((el, ind) => ind === names.indexOf(el)).sort();
 }
 
@@ -52,8 +52,13 @@ function FavoritesPage({favoriteOffers} : FavoritesPageProps) : JSX.Element {
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
                 {
-                  GetUniqueCityNames(favoriteOffers).map(cityName =>
-                  <FavoritesCityPlacesList cityName={cityName} favoritesCityPlaces={favoriteOffers.filter(offer => offer.city.name==cityName)}/>)
+                  GetUniqueCityNames(favoriteOffers).map((cityName) =>
+                    (
+                      <FavoritesCityPlacesList cityName={cityName} favoritesCityPlaces={favoriteOffers.filter((offer) =>
+                        offer.city.name === cityName)}
+                      key={`${cityName}`}
+                      />
+                    ))
                 }
               </ul>
             </section>

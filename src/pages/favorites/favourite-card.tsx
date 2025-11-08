@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import { CardOffer } from "../../models/offers";
-import { GetPersentsFromRating} from "../../components/rating/rating";
+import { Link } from 'react-router-dom';
+import { CardOffer } from '../../models/offers';
+import { GetPersentsFromRating} from '../../components/rating/rating';
 
 
 type FavoriteCardProps = {
-  offer: CardOffer
+  offer: CardOffer;
 }
 
 export function FavoriteCard({offer}: FavoriteCardProps):JSX.Element {

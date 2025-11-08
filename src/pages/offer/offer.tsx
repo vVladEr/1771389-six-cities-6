@@ -1,15 +1,15 @@
-import { Link, useParams } from "react-router-dom";
-import { FullOffer } from "../../models/offers";
-import { MainOffer } from "./main-offer";
-import { AppRoute } from "../../const";
+import { Link, useParams } from 'react-router-dom';
+import { FullOffer } from '../../models/offers';
+import { MainOffer } from './main-offer';
+import { AppRoute } from '../../const';
 
 type OfferPageProps = {
-  fullOffers: FullOffer[]
+  fullOffers: FullOffer[];
 }
 
 function OfferPage({fullOffers}: OfferPageProps) : JSX.Element {
   const {id} = useParams();
-  const offer: FullOffer | undefined = fullOffers.find(offer => offer.id === id)
+  const offer: FullOffer | undefined = fullOffers.find((possibleOffer) => possibleOffer.id === id);
   return(
     <body>
       <div className="page">
