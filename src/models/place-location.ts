@@ -6,7 +6,7 @@ export type PlaceLocation = {
 }
 
 export type MarkedPlaceLocation = PlaceLocation & {
-  offerId: string
+  offerId: string;
 }
 
 export type MarkedPlaceLocations = MarkedPlaceLocation[]

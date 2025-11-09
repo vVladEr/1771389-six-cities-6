@@ -11,7 +11,7 @@ type MainPageProps = {
 }
 
 function MainPage({offers} : MainPageProps) : JSX.Element {
-  const [currentOfferId, setActiveOfferId] = React.useState("");
+  const [currentOfferId, setActiveOfferId] = React.useState('');
 
   return(
     <body>
@@ -81,18 +81,18 @@ function MainPage({offers} : MainPageProps) : JSX.Element {
               <div className="cities__right-section">
                 <section className="cities__map map">
                   <OffersMap city={Amsterdam} selectedPointId={currentOfferId} points={offers.map(
-                    (offer) =>
-                      {
-                        let loc : MarkedPlaceLocation =
+                    (offer) => {
+                      const loc : MarkedPlaceLocation =
                         {
                           offerId : offer.id,
                           latitude : offer.location.latitude,
                           longitude : offer.location.longitude,
                           zoom : offer.location.zoom
-                        }
-                        return loc;
-                      }
-                  )} />
+                        };
+                      return loc;
+                    }
+                  )}
+                  />
                 </section>
               </div>
             </div>

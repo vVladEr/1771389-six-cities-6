@@ -5,7 +5,7 @@ import RentCard from './rent-card';
 
 type OffersProps = {
   offers: CardOffer[];
-  setActiveOfferFunc: React.Dispatch<React.SetStateAction<string>>
+  setActiveOfferFunc: React.Dispatch<React.SetStateAction<string>>;
 }
 
 
