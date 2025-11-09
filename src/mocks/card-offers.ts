@@ -23,7 +23,7 @@ export const CardOffers : CardOffer[] =
       'zoom': 16
     },
     'isFavorite': false,
-    'isPremium': true,
+    'isPremium': false,
     'rating': 4.7
   },
   {
@@ -115,7 +115,7 @@ export const CardOffers : CardOffer[] =
       'zoom': 16
     },
     'isFavorite': false,
-    'isPremium': true,
+    'isPremium': false,
     'rating': 2.9
   }
 ];
