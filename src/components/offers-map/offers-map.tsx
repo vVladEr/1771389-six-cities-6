@@ -54,7 +54,7 @@ function OffersMap(props: MapProps): JSX.Element {
     }
   }, [map, points, selectedPointId]);
 
-  return <div style={{height: '500px'}} ref={mapRef}></div>;
+  return <div style={{height: '100%'}} ref={mapRef}></div>;
 }
 
 export default OffersMap;
