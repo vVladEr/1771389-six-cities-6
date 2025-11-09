@@ -1,8 +1,8 @@
-enum CardType {
+enum OfferType {
     Apartment = 'Apartment',
     Room = 'Room',
     House = 'House',
     Hotel = 'Hotel'
 }
 
-export default CardType;
+export default OfferType;
