@@ -10,16 +10,16 @@ export const CardOffers : CardOffer[] =
     'price': 131,
     'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/16.jpg',
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.868610000000004,
-      'longitude': 2.342499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'isFavorite': false,
@@ -33,16 +33,16 @@ export const CardOffers : CardOffer[] =
     'price': 308,
     'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/6.jpg',
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.858610000000006,
-      'longitude': 2.330499,
+      'latitude': 52.3609553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'isFavorite': false,
@@ -56,16 +56,16 @@ export const CardOffers : CardOffer[] =
     'price': 151,
     'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/9.jpg',
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.85761,
-      'longitude': 2.358499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.929309666406198,
       'zoom': 16
     },
     'isFavorite': false,
@@ -79,44 +79,21 @@ export const CardOffers : CardOffer[] =
     'price': 129,
     'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/6.jpg',
     'city': {
-      'name': 'Dusseldorf',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 51.225402,
-        'longitude': 6.776314,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 51.225402,
-      'longitude': 6.784314,
+      'latitude': 52.3809553943508,
+      'longitude': 4.939309666406198,
       'zoom': 16
     },
     'isFavorite': false,
     'isPremium': true,
     'rating': 4.5
-  },
-  {
-    'id': 'c15d46a6-f599-4531-af3b-9f745f14c411',
-    'title': 'Wood and stone place',
-    'type': 'house',
-    'price': 246,
-    'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/5.jpg',
-    'city': {
-      'name': 'Cologne',
-      'location': {
-        'latitude': 50.938361,
-        'longitude': 6.959974,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 50.934361,
-      'longitude': 6.943974,
-      'zoom': 16
-    },
-    'isFavorite': false,
-    'isPremium': false,
-    'rating': 2.9
   }
 ];
 

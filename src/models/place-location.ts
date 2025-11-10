@@ -4,3 +4,9 @@ export type PlaceLocation = {
   longitude: number;
   zoom: number;
 }
+
+export type MarkedPlaceLocation = PlaceLocation & {
+  offerId: string;
+}
+
+export type MarkedPlaceLocations = MarkedPlaceLocation[]

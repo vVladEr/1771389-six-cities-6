@@ -17,16 +17,16 @@ export const FullOffers : FullOffer[] = [
       'https://14.design.htmlacademy.pro/static/hotel/8.jpg'
     ],
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.868610000000004,
-      'longitude': 2.342499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'goods': [
@@ -60,16 +60,16 @@ export const FullOffers : FullOffer[] = [
       'https://14.design.htmlacademy.pro/static/hotel/1.jpg'
     ],
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.858610000000006,
-      'longitude': 2.330499,
+      'latitude': 52.3609553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'goods': [
@@ -112,16 +112,16 @@ export const FullOffers : FullOffer[] = [
       'https://14.design.htmlacademy.pro/static/hotel/5.jpg'
     ],
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 48.85761,
-      'longitude': 2.358499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.929309666406198,
       'zoom': 16
     },
     'goods': [
@@ -141,58 +141,6 @@ export const FullOffers : FullOffer[] = [
     'maxAdults': 1
   },
   {
-    'id': 'c15d46a6-f599-4531-af3b-9f745f14c411',
-    'title': 'Wood and stone place',
-    'description': 'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
-    'type': 'house',
-    'price': 246,
-    'images': [
-      'https://14.design.htmlacademy.pro/static/hotel/16.jpg',
-      'https://14.design.htmlacademy.pro/static/hotel/4.jpg',
-      'https://14.design.htmlacademy.pro/static/hotel/10.jpg',
-      'https://14.design.htmlacademy.pro/static/hotel/2.jpg',
-      'https://14.design.htmlacademy.pro/static/hotel/19.jpg',
-      'https://14.design.htmlacademy.pro/static/hotel/15.jpg'
-    ],
-    'city': {
-      'name': 'Cologne',
-      'location': {
-        'latitude': 50.938361,
-        'longitude': 6.959974,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 50.934361,
-      'longitude': 6.943974,
-      'zoom': 16
-    },
-    'goods': [
-      'Breakfast',
-      'Washer',
-      'Laptop friendly workspace',
-      'Fridge',
-      'Washing machine',
-      'Wi-Fi',
-      'Kitchen',
-      'Heating',
-      'Coffee machine',
-      'Cable TV',
-      'Air conditioning',
-      'Baby seat'
-    ],
-    'host': {
-      'isPro': true,
-      'name': 'Angelina',
-      'avatarUrl': 'https://14.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
-    },
-    'isPremium': true,
-    'isFavorite': false,
-    'rating': 2.9,
-    'bedrooms': 4,
-    'maxAdults': 7
-  },
-  {
     'id': '32933ed7-926d-4080-a5ce-152d36efc16c',
     'title': 'Tile House',
     'description': 'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
@@ -207,16 +155,16 @@ export const FullOffers : FullOffer[] = [
       'https://14.design.htmlacademy.pro/static/hotel/15.jpg'
     ],
     'city': {
-      'name': 'Dusseldorf',
+      'name': 'Amsterdam',
       'location': {
-        'latitude': 51.225402,
-        'longitude': 6.776314,
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13
       }
     },
     'location': {
-      'latitude': 51.225402,
-      'longitude': 6.784314,
+      'latitude': 52.3809553943508,
+      'longitude': 4.939309666406198,
       'zoom': 16
     },
     'goods': [
