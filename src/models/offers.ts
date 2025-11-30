@@ -16,12 +16,13 @@ export type CardOffer = {
   rating: number;
 }
 
-export type FullOffer = {
+export type Offers = {
   id: string;
   title: string;
   description: string;
   type: string;
   price: number;
+  previewImage: string;
   images: string[];
   city: City;
   location: PlaceLocation;

@@ -1,13 +1,14 @@
-import { FullOffer} from '../models/offers';
+import { Offers} from '../models/offers';
 
 
-export const FullOffers : FullOffer[] = [
+export const FullOffers : Offers[] = [
   {
     'id': '0a6aea6b-a3d8-417d-971a-045327dc02ef',
     'title': 'Penthouse, 4-5 rooms + 5 balconies',
     'description': 'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
     'type': 'room',
     'price': 131,
+    'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/16.jpg',
     'images': [
       'https://14.design.htmlacademy.pro/static/hotel/19.jpg',
       'https://14.design.htmlacademy.pro/static/hotel/12.jpg',
@@ -51,6 +52,7 @@ export const FullOffers : FullOffer[] = [
     'description': 'This is a place for dreamers to reset, reflect, and create. Designed with a \'slow\' pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.',
     'type': 'apartment',
     'price': 308,
+    'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/6.jpg',
     'images': [
       'https://14.design.htmlacademy.pro/static/hotel/6.jpg',
       'https://14.design.htmlacademy.pro/static/hotel/4.jpg',
@@ -103,6 +105,7 @@ export const FullOffers : FullOffer[] = [
     'description': 'I rent out a very sunny and bright apartment only 7 minutes walking distance to the metro station. The apartment has a spacious living room with a kitchen, one bedroom and a bathroom with mit bath. A terrace can be used in summer.',
     'type': 'hotel',
     'price': 151,
+    'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/9.jpg',
     'images': [
       'https://14.design.htmlacademy.pro/static/hotel/9.jpg',
       'https://14.design.htmlacademy.pro/static/hotel/8.jpg',
@@ -146,6 +149,7 @@ export const FullOffers : FullOffer[] = [
     'description': 'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
     'type': 'apartment',
     'price': 129,
+    'previewImage': 'https://14.design.htmlacademy.pro/static/hotel/6.jpg',
     'images': [
       'https://14.design.htmlacademy.pro/static/hotel/3.jpg',
       'https://14.design.htmlacademy.pro/static/hotel/18.jpg',

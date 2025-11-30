@@ -6,20 +6,19 @@ import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { CardOffer, FullOffer } from '../../models/offers';
+import { Offers } from '../../models/offers';
 
 type AppPops = {
-    cardOffers: CardOffer[];
-    fullOffers: FullOffer[];
+    offers: Offers[];
 }
 
-function App({cardOffers, fullOffers} : AppPops) {
+function App({ offers} : AppPops) {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage offers={cardOffers}/>}
+          element={<MainPage offers={offers}/>}
         />
         <Route
           path={AppRoute.Login}
@@ -31,13 +30,13 @@ function App({cardOffers, fullOffers} : AppPops) {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.Auth}
             >
-              <FavoritesPage favoriteOffers={cardOffers}/>
+              <FavoritesPage favoriteOffers={offers}/>
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferPage fullOffers={fullOffers}/>}
+          element={<OfferPage fullOffers={offers}/>}
         />
         <Route
           path="*"
