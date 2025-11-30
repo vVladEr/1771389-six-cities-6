@@ -10,7 +10,7 @@ export const Paris: City = {
   "location": {
     "latitude": 48.85661,
     "longitude": 2.351499,
-    "zoom": 13
+    "zoom": 11
   }
 };
 
@@ -19,7 +19,7 @@ export const Cologne: City = {
   "location": {
     "latitude": 50.938361,
     "longitude": 6.959974,
-    "zoom": 13
+    "zoom": 11
   }
 };
 
@@ -28,7 +28,7 @@ export const Brussels: City = {
   "location": {
     "latitude": 50.846557,
     "longitude": 4.351697,
-    "zoom": 13
+    "zoom": 11
   }
 };
 
@@ -38,7 +38,7 @@ export const Amsterdam: City = {
   location : {
     latitude : 52.38,
     longitude : 4.85,
-    zoom : 13
+    zoom : 11
   }
 };
 
@@ -47,7 +47,7 @@ export const Hamburg: City = {
   "location": {
     "latitude": 53.550341,
     "longitude": 10.000654,
-    "zoom": 13
+    "zoom": 11
   }
 };
 
@@ -56,7 +56,7 @@ export const Dusseldorf: City = {
   "location": {
     "latitude": 51.225402,
     "longitude": 6.776314,
-    "zoom": 13
+    "zoom": 11
   }
 };
 
