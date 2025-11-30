@@ -13,3 +13,13 @@ export const Amsterdam: City = {
     zoom : 13
   }
 };
+
+
+export const Paris: City = {
+  name: 'Paris',
+  location : {
+    latitude : 52.38,
+    longitude : 4.85,
+    zoom : 13
+  }
+};

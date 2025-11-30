@@ -2,21 +2,7 @@ import { City } from './city';
 import { Host } from './host';
 import { PlaceLocation } from './place-location';
 
-
-export type CardOffer = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  previewImage: string;
-  city: City;
-  location:PlaceLocation;
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-}
-
-export type Offers = {
+export type Offer = {
   id: string;
   title: string;
   description: string;

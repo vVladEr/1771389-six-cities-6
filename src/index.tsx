@@ -16,6 +16,8 @@ const Settings = {
 
 root.render(
   <React.StrictMode>
-    <App  offers={Settings.fullOffers}/>
+    <Provider store = {store}>
+      <App offers={Settings.fullOffers}/>
+    </Provider>
   </React.StrictMode>
 );

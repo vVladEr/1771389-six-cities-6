@@ -1,7 +1,7 @@
-import { Offers} from '../models/offers';
+import { Offer} from '../models/offers';
 
 
-export const FullOffers : Offers[] = [
+export const FullOffers : Offer[] = [
   {
     'id': '0a6aea6b-a3d8-417d-971a-045327dc02ef',
     'title': 'Penthouse, 4-5 rooms + 5 balconies',
