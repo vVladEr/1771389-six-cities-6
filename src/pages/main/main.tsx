@@ -2,7 +2,7 @@ import { RentOfferList } from './rent-offer-list';
 import { Header } from '../../components/header/header';
 import OffersMap from '../../components/offers-map/offers-map';
 import { City } from '../../models/city';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { MarkedPlaceLocation } from '../../models/place-location';
 import { useDispatch, useSelector } from 'react-redux';
 import { allCities, allPlaces, curCity } from '../../store/selectors';
@@ -12,16 +12,16 @@ import { changeCity } from '../../store/action';
 
 function MainPage() : JSX.Element {
   const dispatch = useDispatch();
-  let currentCity = useSelector(curCity);
-  let cities = useSelector(allCities);
-  let offers = useSelector(allPlaces);
-  let filteredPlaces = offers.filter(place => place.city.name === currentCity.name)
+  const currentCity = useSelector(curCity);
+  const cities = useSelector(allCities);
+  const offers = useSelector(allPlaces);
+  const filteredPlaces = offers.filter((place) => place.city.name === currentCity.name);
 
   const [currentOfferId, setActiveOfferId] = useState('');
 
   const onCityChange = (city: City) => {
     dispatch(changeCity(city));
-  }
+  };
 
   return(
     <body>

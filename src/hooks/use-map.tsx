@@ -34,7 +34,7 @@ function useMap(
     }
   }, [mapRef, city]);
 
-    useEffect(() => {
+  useEffect(() => {
     if (map) {
       map.setView({ lat: city.location.latitude, lng: city.location.longitude }, city.location.zoom);
     }

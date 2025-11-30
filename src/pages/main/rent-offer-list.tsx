@@ -1,10 +1,10 @@
 import React from 'react';
-import { CardOffer } from '../../models/offers';
+import { Offer } from '../../models/offers';
 import RentCard from './rent-card';
 
 
 type OffersProps = {
-  offers: CardOffer[];
+  offers: Offer[];
   setActiveOfferFunc: React.Dispatch<React.SetStateAction<string>>;
 }
 

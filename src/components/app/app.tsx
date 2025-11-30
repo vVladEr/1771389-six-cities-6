@@ -16,7 +16,7 @@ type AppPops = {
 }
 
 function App({ offers} : AppPops) {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(addPlaces());
