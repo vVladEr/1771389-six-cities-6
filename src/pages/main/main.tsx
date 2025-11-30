@@ -5,7 +5,7 @@ import { City } from '../../models/city';
 import { useState } from 'react';
 import { MarkedPlaceLocation } from '../../models/place-location';
 import { useDispatch, useSelector } from 'react-redux';
-import { allCities, allPlaces, curCity } from '../../store/selectors';
+import { allCities, curCity, offersByCity } from '../../store/selectors';
 import { CitiesList } from './cities-list';
 import { changeCity } from '../../store/action';
 
@@ -14,8 +14,7 @@ function MainPage() : JSX.Element {
   const dispatch = useDispatch();
   const currentCity = useSelector(curCity);
   const cities = useSelector(allCities);
-  const offers = useSelector(allPlaces);
-  const filteredOffers = offers.filter((place) => place.city.name === currentCity.name);
+  const filteredOffers = useSelector(offersByCity);
 
   const [currentOfferId, setActiveOfferId] = useState('');
 
