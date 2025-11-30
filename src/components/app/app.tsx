@@ -6,20 +6,27 @@ import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { CardOffer, FullOffer } from '../../models/offers';
+import { Offer } from '../../models/offers';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { addPlaces } from '../../store/action';
 
 type AppPops = {
-    cardOffers: CardOffer[];
-    fullOffers: FullOffer[];
+    offers: Offer[];
 }
 
-function App({cardOffers, fullOffers} : AppPops) {
+function App({ offers} : AppPops) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(addPlaces());
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage offers={cardOffers}/>}
+          element={<MainPage/>}
         />
         <Route
           path={AppRoute.Login}
@@ -31,13 +38,13 @@ function App({cardOffers, fullOffers} : AppPops) {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.Auth}
             >
-              <FavoritesPage favoriteOffers={cardOffers}/>
+              <FavoritesPage favoriteOffers={offers}/>
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferPage fullOffers={fullOffers}/>}
+          element={<OfferPage fullOffers={offers}/>}
         />
         <Route
           path="*"

@@ -1,10 +1,10 @@
 import { Navigate } from 'react-router-dom';
-import { FullOffer } from '../../models/offers';
+import { Offer } from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 import { ReviewForm } from './review-form';
 
 type MainOfferProps = {
-  mainOffer: FullOffer | undefined;
+  mainOffer: Offer | undefined;
 }
 
 

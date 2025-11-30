@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { CardOffer } from '../../models/offers';
+import { Offer } from '../../models/offers';
 import { FavoritesCityPlacesList } from './favorites-city-places-list';
 import { Header } from '../../components/header/header';
 
 type FavoritesPageProps = {
-  favoriteOffers : CardOffer[];
+  favoriteOffers : Offer[];
 }
 
-function GetUniqueCityNames(offers: CardOffer[]): string[] {
+function GetUniqueCityNames(offers: Offer[]): string[] {
   const names = offers.map((offer) => offer.city.name);
   return names.filter((el, ind) => ind === names.indexOf(el)).sort();
 }
