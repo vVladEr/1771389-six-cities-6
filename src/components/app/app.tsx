@@ -7,18 +7,26 @@ import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { Offer } from '../../models/offers';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { addPlaces } from '../../store/action';
 
 type AppPops = {
     offers: Offer[];
 }
 
 function App({ offers} : AppPops) {
+    const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(addPlaces());
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainPage offers={offers}/>}
+          element={<MainPage/>}
         />
         <Route
           path={AppRoute.Login}

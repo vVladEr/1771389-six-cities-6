@@ -60,4 +60,6 @@ export const Dusseldorf: City = {
   }
 };
 
+export type Cities = City[];
 
+export const DefaultCities : Cities  = [Paris, Cologne, Brussels, Amsterdam, Hamburg, Dusseldorf];
