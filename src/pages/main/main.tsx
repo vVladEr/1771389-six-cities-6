@@ -15,7 +15,7 @@ function MainPage() : JSX.Element {
   const currentCity = useSelector(curCity);
   const cities = useSelector(allCities);
   const offers = useSelector(allPlaces);
-  const filteredPlaces = offers.filter((place) => place.city.name === currentCity.name);
+  const filteredOffers = offers.filter((place) => place.city.name === currentCity.name);
 
   const [currentOfferId, setActiveOfferId] = useState('');
 
@@ -34,7 +34,7 @@ function MainPage() : JSX.Element {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{filteredPlaces.length} places to stay in {currentCity.name}</b>
+                <b className="places__found">{filteredOffers.length} places to stay in {currentCity.name}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex={0}>
@@ -50,11 +50,11 @@ function MainPage() : JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <RentOfferList offers={filteredPlaces} setActiveOfferFunc={setActiveOfferId}/>
+                <RentOfferList offers={filteredOffers} setActiveOfferFunc={setActiveOfferId}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <OffersMap city={currentCity} selectedPointId={currentOfferId} points={filteredPlaces.map(
+                  <OffersMap city={currentCity} selectedPointId={currentOfferId} points={filteredOffers.map(
                     (offer) => {
                       const loc : MarkedPlaceLocation =
                         {
