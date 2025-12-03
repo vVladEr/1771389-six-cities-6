@@ -22,14 +22,14 @@ export type Offer = {
 }
 
 export type CardOffer = {
-  id: string
-  title: string
-  type: string
-  price: number
-  city: City
-  location: PlaceLocation
-  isFavorite: boolean
-  isPremium: boolean
-  rating: number
-  previewImage: string
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: City;
+  location: PlaceLocation;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  previewImage: string;
 }

@@ -6,8 +6,8 @@ import { CardOffer } from '../models/offers';
 export type OffersState = {
   city: City;
   cities: Cities;
-  places: CardOffer[],
-  isLoadingOffers: boolean
+  places: CardOffer[];
+  isLoadingOffers: boolean;
 }
 
 const intialState: OffersState = {

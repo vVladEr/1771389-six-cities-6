@@ -11,12 +11,13 @@ import { isLoadingOffers } from '../../store/selectors';
 import { LoadingScreen } from '../../pages/loading/loading';
 
 function App() {
-  const isLoading = useSelector(isLoadingOffers)
+  const isLoading = useSelector(isLoadingOffers);
 
-  if (isLoading)
+  if (isLoading) {
     return(
-    <LoadingScreen/>
+      <LoadingScreen/>
     );
+  }
 
   return (
     <BrowserRouter>
