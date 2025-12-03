@@ -1,19 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Cities, City, DefaultCities, Paris } from '../models/city';
-import { addPlaces, changeCity } from './action';
-import { FullOffers } from '../mocks/full-offers';
-import { Offer } from '../models/offers';
+import { addOffers, changeCity } from './action';
+import { CardOffer } from '../models/offers';
 
 export type OffersState = {
   city: City;
   cities: Cities;
-  places: Offer[];
+  places: CardOffer[];
 }
 
 const intialState: OffersState = {
   city: Paris,
   cities: DefaultCities,
-  places: FullOffers
+  places: []
 };
 
 
@@ -22,7 +21,7 @@ export const reducer = createReducer(intialState, (builder) => {
     .addCase(changeCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(addPlaces, (state) => {
-      state.places = FullOffers;
+    .addCase(addOffers, (state, action) => {
+      state.places = action.payload;
     });
 });

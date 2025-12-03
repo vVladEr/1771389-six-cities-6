@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../models/offers';
+import { CardOffer } from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 
 type RentCardProps = {
-    offer: Offer;
+    offer: CardOffer;
     onMouseOver: () => void;
     onMouseLeave: () => void;
 }
