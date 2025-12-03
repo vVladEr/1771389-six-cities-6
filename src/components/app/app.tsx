@@ -6,8 +6,18 @@ import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
+import { useSelector } from 'react-redux';
+import { isLoadingOffers } from '../../store/selectors';
+import { LoadingScreen } from '../../pages/loading/loading';
 
 function App() {
+  const isLoading = useSelector(isLoadingOffers)
+
+  if (isLoading)
+    return(
+    <LoadingScreen/>
+    );
+
   return (
     <BrowserRouter>
       <Routes>

@@ -6,13 +6,15 @@ import { CardOffer } from '../models/offers';
 export type OffersState = {
   city: City;
   cities: Cities;
-  places: CardOffer[];
+  places: CardOffer[],
+  isLoadingOffers: boolean
 }
 
 const intialState: OffersState = {
   city: Paris,
   cities: DefaultCities,
-  places: []
+  places: [],
+  isLoadingOffers: false
 };
 
 
