@@ -6,13 +6,15 @@ import { useAppDispatch } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 
 export function Header() : JSX.Element{
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const authorizationStatus = useSelector(authStatus)
-  const curUserName = useSelector(userName)
-  const curUserAvatarPatch = useSelector(userImage)
+  const authorizationStatus = useSelector(authStatus);
+  const curUserName = useSelector(userName);
+  const curUserAvatarPatch = useSelector(userImage);
 
-  const handleLogOut = () => dispatch(logoutAction())
+  const handleLogOut = () => {
+    dispatch(logoutAction());
+  };
 
   return(
     <header className="header">
@@ -27,25 +29,26 @@ export function Header() : JSX.Element{
             <ul className="header__nav-list">
               {
                 authorizationStatus === AuthorizationStatus.Auth ?
-                    <><li className="header__nav-item user">
-                    <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
-                      <div className="header__avatar-wrapper user__avatar-wrapper">
-                        <img className="header__avatar" src={curUserAvatarPatch} alt="user avatar"/>
-                      </div>
-                      <span className="header__user-name user__name">{curUserName}</span>
-                      <span className="header__favorite-count">0</span>
-                    </Link>
-                  </li>
-                  <li className="header__nav-item">
+                  <>
+                    <li className="header__nav-item user">
+                      <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
+                        <div className="header__avatar-wrapper user__avatar-wrapper">
+                          <img className="header__avatar" src={curUserAvatarPatch} alt="user avatar"/>
+                        </div>
+                        <span className="header__user-name user__name">{curUserName}</span>
+                        <span className="header__favorite-count">0</span>
+                      </Link>
+                    </li>
+                    <li className="header__nav-item">
                       <Link className="header__nav-link" to={AppRoute.Login} onClick={handleLogOut}>
                         <span className="header__signout">Sign out</span>
                       </Link>
-                    </li></>
-                :
-                    <li className="header__nav-item">
-                      <Link className="header__nav-link" to={AppRoute.Login}>
-                        <span className="header__signout">Sign In</span>
-                      </Link>
+                    </li>
+                  </> :
+                  <li className="header__nav-item">
+                    <Link className="header__nav-link" to={AppRoute.Login}>
+                      <span className="header__signout">Sign In</span>
+                    </Link>
                   </li>
               }
 

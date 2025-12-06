@@ -11,16 +11,16 @@ export const createAPI = (): AxiosInstance => {
   });
 
   api.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    const token = getToken();
+    (config: InternalAxiosRequestConfig) => {
+      const token = getToken();
 
-    if (token && config.headers) {
-      config.headers['x-token'] = token;
-    }
+      if (token && config.headers) {
+        config.headers['x-token'] = token;
+      }
 
-    return config;
-  },
-);
+      return config;
+    },
+  );
 
   return api;
 };

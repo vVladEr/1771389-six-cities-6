@@ -7,6 +7,7 @@ import { addOffers, setAuthStatus, setCurUserEmail, setCurUserImage, setIsLoadin
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../models/auth-data';
 import {UserData} from '../models/user-data';
+import { FullUserData } from '../models/full-user-data';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -30,10 +31,10 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
     try {
-      const {data: {email, avatarUrl}} = await api.get(APIRoute.Login);
+      const {data: {email, avatarUrl}} = await api.get<FullUserData>(APIRoute.Login);
       dispatch(setAuthStatus(AuthorizationStatus.Auth));
-      dispatch(setCurUserEmail(email))
-      dispatch(setCurUserImage(avatarUrl))
+      dispatch(setCurUserEmail(email));
+      dispatch(setCurUserImage(avatarUrl));
     } catch {
       dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
     }
@@ -47,12 +48,12 @@ export const loginAction = createAsyncThunk<void, AuthData, {
 }>(
   'user/login',
   async ({login: email, password}, {dispatch, extra: api}) => {
-      try {
+    try {
       const {data: {token, avatarUrl}} = await api.post<UserData>(APIRoute.Login, {email, password});
       saveToken(token);
       dispatch(setAuthStatus(AuthorizationStatus.Auth));
       dispatch(setCurUserEmail(email));
-      dispatch(setCurUserImage(avatarUrl))
+      dispatch(setCurUserImage(avatarUrl));
     } catch {
       dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
     }
@@ -70,6 +71,6 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     await api.delete(APIRoute.Logout);
     dropToken();
     dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
-    dispatch(setCurUserEmail(""));
+    dispatch(setCurUserEmail(''));
   },
 );

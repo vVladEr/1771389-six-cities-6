@@ -10,8 +10,8 @@ export type OffersState = {
   places: CardOffer[];
   isLoadingOffers: boolean;
   authorizationStatus: AuthorizationStatus;
-  curUserName: string
-  userImagePath: string
+  curUserName: string;
+  userImagePath: string;
 }
 
 const intialState: OffersState = {
@@ -20,8 +20,8 @@ const intialState: OffersState = {
   places: [],
   isLoadingOffers: false,
   authorizationStatus: AuthorizationStatus.Unknown,
-  curUserName: "",
-  userImagePath: ""
+  curUserName: '',
+  userImagePath: ''
 };
 
 
@@ -34,15 +34,15 @@ export const reducer = createReducer(intialState, (builder) => {
       state.places = action.payload;
     })
     .addCase(setIsLoadingOffers, (state, action) => {
-      state.isLoadingOffers = action.payload
+      state.isLoadingOffers = action.payload;
     })
     .addCase(setAuthStatus, (state, action) => {
-      state.authorizationStatus = action.payload
+      state.authorizationStatus = action.payload;
     })
     .addCase(setCurUserEmail, (state, action) => {
-      state.curUserName = action.payload
+      state.curUserName = action.payload;
     })
     .addCase(setCurUserImage, (state, action) => {
-      state.userImagePath = action.payload
+      state.userImagePath = action.payload;
     });
 });
