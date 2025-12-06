@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { City } from '../models/city';
 import { CardOffer } from '../models/offers';
-import { AuthorizationStatus } from '../const';
+import { AppRoute, AuthorizationStatus } from '../const';
 
 
 export const changeCity = createAction<City>('city/change');
@@ -15,3 +15,5 @@ export const setAuthStatus = createAction<AuthorizationStatus>('authorization/st
 export const setCurUserEmail = createAction<string>('user/email');
 
 export const setCurUserImage = createAction<string>('user/image');
+
+export const redirectToRoute = createAction<AppRoute>('app/redirectToRoute');

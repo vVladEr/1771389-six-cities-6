@@ -1,6 +1,6 @@
 import MainPage from '../../pages/main/main';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import {Route, Routes} from 'react-router-dom';
+import { AppRoute } from '../../const';
 import LoginPage from '../../pages/login/login';
 import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
@@ -9,6 +9,8 @@ import PrivateRoute from '../private-route/private-route';
 import { useSelector } from 'react-redux';
 import { isLoadingOffers } from '../../store/selectors';
 import { LoadingScreen } from '../../pages/loading/loading';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 function App() {
   const isLoading = useSelector(isLoadingOffers);
@@ -20,7 +22,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Root}
@@ -33,9 +35,7 @@ function App() {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
-            >
+            <PrivateRoute>
               <FavoritesPage favoriteOffers={[]}/>
             </PrivateRoute>
           }
@@ -49,7 +49,7 @@ function App() {
           element={<NotFoundPage />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 

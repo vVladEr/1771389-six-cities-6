@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
@@ -7,7 +7,6 @@ import { useAppDispatch } from '../../hooks';
 
 function LoginPage() : JSX.Element {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
@@ -20,7 +19,6 @@ function LoginPage() : JSX.Element {
         password: passwordRef.current.value
       };
       dispatch(loginAction(data));
-      navigate(AppRoute.Root);
     }
   };
 
