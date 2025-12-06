@@ -13,3 +13,5 @@ export const setIsLoadingOffers = createAction<boolean>('offers/loading');
 export const setAuthStatus = createAction<AuthorizationStatus>('authorization/status');
 
 export const setCurUserEmail = createAction<string>('user/email');
+
+export const setCurUserImage = createAction<string>('user/image');

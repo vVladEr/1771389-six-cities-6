@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Cities, City, DefaultCities, Paris } from '../models/city';
-import { addOffers, changeCity, setAuthStatus, setCurUserEmail, setIsLoadingOffers } from './action';
+import { addOffers, changeCity, setAuthStatus, setCurUserEmail, setCurUserImage, setIsLoadingOffers } from './action';
 import { CardOffer } from '../models/offers';
 import { AuthorizationStatus } from '../const';
 
@@ -11,6 +11,7 @@ export type OffersState = {
   isLoadingOffers: boolean;
   authorizationStatus: AuthorizationStatus;
   curUserName: string
+  userImagePath: string
 }
 
 const intialState: OffersState = {
@@ -19,7 +20,8 @@ const intialState: OffersState = {
   places: [],
   isLoadingOffers: false,
   authorizationStatus: AuthorizationStatus.Unknown,
-  curUserName: ""
+  curUserName: "",
+  userImagePath: ""
 };
 
 
@@ -39,5 +41,8 @@ export const reducer = createReducer(intialState, (builder) => {
     })
     .addCase(setCurUserEmail, (state, action) => {
       state.curUserName = action.payload
+    })
+    .addCase(setCurUserImage, (state, action) => {
+      state.userImagePath = action.payload
     });
 });
