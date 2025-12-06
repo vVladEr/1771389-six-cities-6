@@ -3,7 +3,7 @@ import { AppDispatch, State } from '../models/state';
 import { AxiosInstance } from 'axios';
 import { CardOffer } from '../models/offers';
 import { APIRoute, AuthorizationStatus } from '../const';
-import { addOffers, setAuthStatus, setIsLoadingOffers } from './action';
+import { addOffers, setAuthStatus, setCurUserEmail, setIsLoadingOffers } from './action';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../models/auth-data';
 import {UserData} from '../models/user-data';
@@ -30,8 +30,9 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
     try {
-      await api.get(APIRoute.Login);
+      const {data: {email}} = await api.get(APIRoute.Login);
       dispatch(setAuthStatus(AuthorizationStatus.Auth));
+      dispatch(setCurUserEmail(email))
     } catch {
       dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
     }
@@ -49,6 +50,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
       const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
       saveToken(token);
       dispatch(setAuthStatus(AuthorizationStatus.Auth));
+      dispatch(setCurUserEmail(email));
     } catch {
       dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
     }
@@ -66,5 +68,6 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     await api.delete(APIRoute.Logout);
     dropToken();
     dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
+    dispatch(setCurUserEmail(""));
   },
 );

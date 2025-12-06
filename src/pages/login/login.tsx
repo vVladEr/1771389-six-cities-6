@@ -19,7 +19,6 @@ function LoginPage() : JSX.Element {
         login: loginRef.current.value,
         password: passwordRef.current.value
       }
-      console.log(data)
       dispatch(loginAction(data));
       navigate(AppRoute.Root)
     }

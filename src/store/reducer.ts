@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { Cities, City, DefaultCities, Paris } from '../models/city';
-import { addOffers, changeCity } from './action';
+import { addOffers, changeCity, setAuthStatus, setCurUserEmail, setIsLoadingOffers } from './action';
 import { CardOffer } from '../models/offers';
 import { AuthorizationStatus } from '../const';
 
@@ -9,7 +9,8 @@ export type OffersState = {
   cities: Cities;
   places: CardOffer[];
   isLoadingOffers: boolean;
-  authorizationStatus: AuthorizationStatus
+  authorizationStatus: AuthorizationStatus;
+  curUserName: string
 }
 
 const intialState: OffersState = {
@@ -17,7 +18,8 @@ const intialState: OffersState = {
   cities: DefaultCities,
   places: [],
   isLoadingOffers: false,
-  authorizationStatus: AuthorizationStatus.Unknown
+  authorizationStatus: AuthorizationStatus.Unknown,
+  curUserName: ""
 };
 
 
@@ -28,5 +30,14 @@ export const reducer = createReducer(intialState, (builder) => {
     })
     .addCase(addOffers, (state, action) => {
       state.places = action.payload;
+    })
+    .addCase(setIsLoadingOffers, (state, action) => {
+      state.isLoadingOffers = action.payload
+    })
+    .addCase(setAuthStatus, (state, action) => {
+      state.authorizationStatus = action.payload
+    })
+    .addCase(setCurUserEmail, (state, action) => {
+      state.curUserName = action.payload
     });
 });

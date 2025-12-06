@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useSelector } from 'react-redux';
-import { authStatus } from '../../store/selectors';
+import { authStatus, userName } from '../../store/selectors';
+import { useAppDispatch } from '../../hooks';
+import { logoutAction } from '../../store/api-actions';
 
 export function Header() : JSX.Element{
+  const dispatch = useAppDispatch()
+
   const authorizationStatus = useSelector(authStatus)
+  const curUserName = useSelector(userName)
+
+  const handleLogOut = () => dispatch(logoutAction())
+
   return(
     <header className="header">
       <div className="container">
@@ -22,11 +30,12 @@ export function Header() : JSX.Element{
                     <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                      <span className="header__favorite-count">3</span>
+                      <span className="header__user-name user__name">{curUserName}</span>
+                      <span className="header__favorite-count">0</span>
                     </Link>
-                  </li><li className="header__nav-item">
-                      <Link className="header__nav-link" to={AppRoute.Login}>
+                  </li>
+                  <li className="header__nav-item">
+                      <Link className="header__nav-link" to={AppRoute.Login} onClick={handleLogOut}>
                         <span className="header__signout">Sign out</span>
                       </Link>
                     </li></>
