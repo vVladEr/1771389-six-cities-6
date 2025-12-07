@@ -20,3 +20,16 @@ export type Offer = {
   bedrooms: number;
   maxAdults: number;
 }
+
+export type CardOffer = {
+  id: string;
+  title: string;
+  type: string;
+  price: number;
+  city: City;
+  location: PlaceLocation;
+  isFavorite: boolean;
+  isPremium: boolean;
+  rating: number;
+  previewImage: string;
+}

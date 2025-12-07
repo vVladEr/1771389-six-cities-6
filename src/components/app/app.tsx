@@ -6,21 +6,19 @@ import FavoritesPage from '../../pages/favorites/favorites';
 import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
-import { Offer } from '../../models/offers';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { addPlaces } from '../../store/action';
+import { useSelector } from 'react-redux';
+import { isLoadingOffers } from '../../store/selectors';
+import { LoadingScreen } from '../../pages/loading/loading';
 
-type AppPops = {
-    offers: Offer[];
-}
+function App() {
+  const isLoading = useSelector(isLoadingOffers);
 
-function App({ offers} : AppPops) {
-  const dispatch = useDispatch();
+  if (isLoading) {
+    return(
+      <LoadingScreen/>
+    );
+  }
 
-  useEffect(() => {
-    dispatch(addPlaces());
-  }, [dispatch]);
   return (
     <BrowserRouter>
       <Routes>
@@ -38,13 +36,13 @@ function App({ offers} : AppPops) {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.Auth}
             >
-              <FavoritesPage favoriteOffers={offers}/>
+              <FavoritesPage favoriteOffers={[]}/>
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferPage fullOffers={offers}/>}
+          element={<OfferPage fullOffers={[]}/>}
         />
         <Route
           path="*"
