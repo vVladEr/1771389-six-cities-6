@@ -8,6 +8,7 @@ import { AuthData } from '../models/auth-data';
 import {UserData} from '../models/user-data';
 import { FullUserData } from '../models/full-user-data';
 import { setAuthStatus, setCurUserEmail, setCurUserImage } from './user-process/user-process';
+import { redirectToRoute } from './action';
 
 export const fetchOffersAction = createAsyncThunk<CardOffer[], undefined, {
   dispatch: AppDispatch;

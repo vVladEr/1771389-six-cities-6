@@ -1,28 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { AuthorizationStatus, NameSpaces } from "../../const";
-import { UserProcess } from "../../models/state";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AuthorizationStatus, NameSpaces } from '../../const';
+import { UserProcess } from '../../models/state';
 
 const initialState: UserProcess = {
   authorizationStatus: AuthorizationStatus.Unknown,
   curUserName: '',
   userImagePath: ''
-}
+};
 
 export const userProcess = createSlice({
   name: NameSpaces.User,
   initialState,
   reducers: {
-    setAuthStatus: (state, action) => {
-        state.authorizationStatus = action.payload;
+    setAuthStatus: (state, action: PayloadAction<AuthorizationStatus>) => {
+      state.authorizationStatus = action.payload;
     },
-    setCurUserEmail: (state, action) => {
+    setCurUserEmail: (state, action: PayloadAction<string>) => {
       state.curUserName = action.payload;
     },
-    setCurUserImage: (state, action) => {
+    setCurUserImage: (state, action: PayloadAction<string>) => {
       state.userImagePath = action.payload;
     },
   }
-  }
+}
 );
 
-export const {setAuthStatus, setCurUserEmail, setCurUserImage} = userProcess.actions
+export const {setAuthStatus, setCurUserEmail, setCurUserImage} = userProcess.actions;
