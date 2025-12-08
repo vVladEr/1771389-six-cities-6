@@ -3,13 +3,13 @@ import { AppDispatch, State } from '../models/state';
 import { AxiosInstance } from 'axios';
 import { CardOffer } from '../models/offers';
 import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
-import { addOffers, redirectToRoute, setAuthStatus, setCurUserEmail, setCurUserImage, setIsLoadingOffers } from './action';
+import { redirectToRoute, setAuthStatus, setCurUserEmail, setCurUserImage, setIsLoadingOffers } from './action';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../models/auth-data';
 import {UserData} from '../models/user-data';
 import { FullUserData } from '../models/full-user-data';
 
-export const fetchOffersAction = createAsyncThunk<void, undefined, {
+export const fetchOffersAction = createAsyncThunk<CardOffer[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -18,8 +18,7 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   async(_arg, {dispatch, extra: api}) => {
     dispatch(setIsLoadingOffers(true));
     const {data} = await api.get<CardOffer[]>(APIRoute.Offers);
-    dispatch(setIsLoadingOffers(false));
-    dispatch(addOffers(data));
+    return data;
   }
 );
 

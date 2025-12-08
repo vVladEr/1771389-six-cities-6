@@ -5,16 +5,16 @@ import { City } from '../../models/city';
 import { useState } from 'react';
 import { MarkedPlaceLocation } from '../../models/place-location';
 import { useDispatch, useSelector } from 'react-redux';
-import { allCities, curCity, offersByCity } from '../../store/selectors';
 import { CitiesList } from './cities-list';
 import { changeCity } from '../../store/action';
+import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 
 
 function MainPage() : JSX.Element {
   const dispatch = useDispatch();
-  const currentCity = useSelector(curCity);
-  const cities = useSelector(allCities);
-  const filteredOffers = useSelector(offersByCity);
+  const currentCity = useSelector(getCurCity);
+  const cities = useSelector(getAllCities);
+  const filteredOffers = useSelector(getOffersByCity);
 
   const [currentOfferId, setActiveOfferId] = useState('');
 
