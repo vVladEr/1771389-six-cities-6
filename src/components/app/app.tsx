@@ -7,13 +7,13 @@ import OfferPage from '../../pages/offer/offer';
 import NotFoundPage from '../../pages/not-found/not-found';
 import PrivateRoute from '../private-route/private-route';
 import { useSelector } from 'react-redux';
-import { isLoadingOffers } from '../../store/selectors';
 import { LoadingScreen } from '../../pages/loading/loading';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
+import { getIsLoading } from '../../store/offers-process/selectors';
 
 function App() {
-  const isLoading = useSelector(isLoadingOffers);
+  const isLoading = useSelector(getIsLoading);
 
   if (isLoading) {
     return(
