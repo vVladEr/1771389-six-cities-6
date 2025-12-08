@@ -32,3 +32,5 @@ export const offersProcess = createSlice({
   }
   }
 );
+
+export const {changeCity} = offersProcess.actions;

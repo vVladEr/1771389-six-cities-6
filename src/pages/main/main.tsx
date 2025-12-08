@@ -6,8 +6,9 @@ import { useState } from 'react';
 import { MarkedPlaceLocation } from '../../models/place-location';
 import { useDispatch, useSelector } from 'react-redux';
 import { CitiesList } from './cities-list';
-import { changeCity } from '../../store/action';
+
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
+import { changeCity } from '../../store/offers-process/offers-process';
 
 
 function MainPage() : JSX.Element {
