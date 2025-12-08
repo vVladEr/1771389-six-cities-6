@@ -25,7 +25,7 @@ export const offersProcess = createSlice({
       state.isLoadingOffers = true;
     })
       .addCase(fetchOffersAction.fulfilled, (state, action) => {
-        state.isLoadingOffers = true;
+        state.isLoadingOffers = false;
         state.places = action.payload;
       });
   }
