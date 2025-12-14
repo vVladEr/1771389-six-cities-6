@@ -1,23 +1,26 @@
 import React from 'react';
 import { CardOffer } from '../../models/offers';
-import RentCard from './rent-card';
+import { OfferCard } from '../offer-card/offer-card';
+import { OffersCardPrefix } from '../../models/card-prefixes';
 
 
 type OffersProps = {
   offers: CardOffer[];
   setActiveOfferFunc: React.Dispatch<React.SetStateAction<string>>;
+  cardPrefix: OffersCardPrefix;
 }
 
 
-export function RentOfferList({offers, setActiveOfferFunc} : OffersProps): JSX.Element {
+export function OfferList({offers, setActiveOfferFunc, cardPrefix} : OffersProps): JSX.Element {
   return(
-    <div className="cities__places-list places__list tabs__content">
+    <div className={`${cardPrefix}__places-list places__list tabs__content`}>
       {
         offers.map((offer) => (
-          <RentCard
+          <OfferCard
             offer={offer}
             onMouseOver={() => setActiveOfferFunc(offer.id)}
             onMouseLeave={() => setActiveOfferFunc('')}
+            cardPrefix={cardPrefix}
             key={offer.id}
           />
         ))

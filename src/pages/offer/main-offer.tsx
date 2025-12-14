@@ -10,11 +10,11 @@ import { getCurCity } from '../../store/offers-process/selectors';
 
 type MainOfferProps = {
   mainOffer: Offer | undefined;
+  offersNearBy: CardOffer[];
 }
 
 
-export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
-  const offersNearBy : CardOffer[] = []
+export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Element{
   const currentCity = useSelector(getCurCity);
   if (!mainOffer) {
     return <Navigate to="*"/>;
