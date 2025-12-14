@@ -1,8 +1,12 @@
 import { Navigate } from 'react-router-dom';
-import { Offer } from '../../models/offers';
+import { CardOffer, Offer } from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 import { ReviewForm } from './review-form';
 import { ReviewsList } from '../../components/review/review-list';
+import OffersMap from '../../components/offers-map/offers-map';
+import { MarkedPlaceLocation } from '../../models/place-location';
+import { useSelector } from 'react-redux';
+import { getCurCity } from '../../store/offers-process/selectors';
 
 type MainOfferProps = {
   mainOffer: Offer | undefined;
@@ -10,6 +14,8 @@ type MainOfferProps = {
 
 
 export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
+  const offersNearBy : CardOffer[] = []
+  const currentCity = useSelector(getCurCity);
   if (!mainOffer) {
     return <Navigate to="*"/>;
   }
@@ -111,7 +117,21 @@ export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
           </section>
         </div>
       </div>
-      <section className="offer__map map"></section>
+      <section className="offer__map map">
+        <OffersMap city={currentCity} selectedPointId={mainOffer.id} points={offersNearBy.map(
+          (offer) => {
+            const loc : MarkedPlaceLocation =
+              {
+                offerId : offer.id,
+                latitude : offer.location.latitude,
+                longitude : offer.location.longitude,
+                zoom : offer.location.zoom
+              };
+            return loc;
+          }
+        )}
+        />
+      </section>
     </section>
   );
 }
