@@ -1,4 +1,3 @@
-import { RentOfferList } from './rent-offer-list';
 import { Header } from '../../components/header/header';
 import OffersMap from '../../components/offers-map/offers-map';
 import { City } from '../../models/city';
@@ -9,6 +8,8 @@ import { CitiesList } from './cities-list';
 
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 import { changeCity } from '../../store/offers-process/offers-process';
+import { OfferList } from '../../components/offers-list/offer-list';
+import { OffersCardPrefix } from '../../models/card-prefixes';
 
 
 function MainPage() : JSX.Element {
@@ -27,7 +28,6 @@ function MainPage() : JSX.Element {
     <body>
       <div className="page page--gray page--main">
         <Header/>
-
         <main className="page__main page__main--index">
           <CitiesList currentCity={currentCity} cities={cities} onCityChange={onCityChange} />
           <div className="cities">
@@ -50,7 +50,7 @@ function MainPage() : JSX.Element {
                     <li className="places__option" tabIndex={0}>Top rated first</li>
                   </ul>
                 </form>
-                <RentOfferList offers={filteredOffers} setActiveOfferFunc={setActiveOfferId}/>
+                <OfferList offers={filteredOffers} setActiveOfferFunc={setActiveOfferId} cardPrefix={OffersCardPrefix.Cities}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">

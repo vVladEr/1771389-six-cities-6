@@ -1,14 +1,21 @@
 import { Navigate } from 'react-router-dom';
-import { Offer } from '../../models/offers';
+import { CardOffer, Offer } from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 import { ReviewForm } from './review-form';
+import { ReviewsList } from '../../components/review/review-list';
+import OffersMap from '../../components/offers-map/offers-map';
+import { MarkedPlaceLocation } from '../../models/place-location';
+import { useSelector } from 'react-redux';
+import { getCurCity } from '../../store/offers-process/selectors';
 
 type MainOfferProps = {
   mainOffer: Offer | undefined;
+  offersNearBy: CardOffer[];
 }
 
 
-export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
+export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Element{
+  const currentCity = useSelector(getCurCity);
   if (!mainOffer) {
     return <Navigate to="*"/>;
   }
@@ -105,36 +112,26 @@ export function MainOffer({mainOffer}: MainOfferProps) : JSX.Element{
             </div>
           </div>
           <section className="offer__reviews reviews">
-            <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-            <ul className="reviews__list">
-              <li className="reviews__item">
-                <div className="reviews__user user">
-                  <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                    <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar"/>
-                  </div>
-                  <span className="reviews__user-name">
-                    Max
-                  </span>
-                </div>
-                <div className="reviews__info">
-                  <div className="reviews__rating rating">
-                    <div className="reviews__stars rating__stars">
-                      <span style={{width: '80%'}}></span>
-                      <span className="visually-hidden">Rating</span>
-                    </div>
-                  </div>
-                  <p className="reviews__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                </div>
-              </li>
-            </ul>
+            <ReviewsList />
             <ReviewForm />
           </section>
         </div>
       </div>
-      <section className="offer__map map"></section>
+      <section className="offer__map map">
+        <OffersMap city={currentCity} selectedPointId={mainOffer.id} points={offersNearBy.map(
+          (offer) => {
+            const loc : MarkedPlaceLocation =
+              {
+                offerId : offer.id,
+                latitude : offer.location.latitude,
+                longitude : offer.location.longitude,
+                zoom : offer.location.zoom
+              };
+            return loc;
+          }
+        )}
+        />
+      </section>
     </section>
   );
 }
