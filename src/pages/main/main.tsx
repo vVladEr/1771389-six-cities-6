@@ -43,7 +43,7 @@ function MainPage() : JSX.Element {
         setSortedOffers(filteredOffers.slice().sort((a, b) => b.rating - a.rating));
         break;
     }
-  }, [filteredOffers, currentSortType, currentCity])
+  }, [filteredOffers, currentSortType, currentCity]);
 
   const onCityChange = (city: City) => {
     dispatch(changeCity(city));
@@ -61,27 +61,29 @@ function MainPage() : JSX.Element {
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{filteredOffers.length} places to stay in {currentCity.name}</b>
                 <form className="places__sorting" action="#" method="get"
-                  onClick={ () => setIsSortOpen(!isSortOpen)}>
+                  onClick={ () => setIsSortOpen(!isSortOpen)}
+                >
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex={0}>
-                      {currentSortType}
+                    {currentSortType}
                     <svg className="places__sorting-arrow" width="7" height="4">
                       <use xlinkHref="#icon-arrow-select"></use>
                     </svg>
                   </span>
-                  <ul className={`places__options places__options--custom ${isSortOpen && "places__options--opened"}`}>
+                  <ul className={`places__options places__options--custom ${isSortOpen && 'places__options--opened'}`}>
                     {
                       Object.values(SortType).map((sortType) => (
                         <li
-                          className={`places__option ${sortType === currentSortType && "places__option--active"}`}
+                          className={`places__option ${sortType === currentSortType && 'places__option--active'}`}
                           tabIndex={0}
                           onClick={() => {
-                            setSortType(sortType)
-                            setIsSortOpen(false)
+                            setSortType(sortType);
+                            setIsSortOpen(false);
                           }}
-                          key={sortType}>
-                            {sortType}
-                          </li>
+                          key={sortType}
+                        >
+                          {sortType}
+                        </li>
 
                       )
                       )
