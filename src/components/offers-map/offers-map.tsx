@@ -13,15 +13,11 @@ type MapProps = {
 };
 
 const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
+  iconUrl: URL_MARKER_DEFAULT
 });
 
 const currentCustomIcon = new Icon({
-  iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
+  iconUrl: URL_MARKER_CURRENT
 });
 
 function OffersMap(props: MapProps): JSX.Element {

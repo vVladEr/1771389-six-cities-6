@@ -1,7 +1,7 @@
 import { Header } from '../../components/header/header';
 import OffersMap from '../../components/offers-map/offers-map';
 import { City } from '../../models/city';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MarkedPlaceLocation } from '../../models/place-location';
 import { useDispatch, useSelector } from 'react-redux';
 import { CitiesList } from './cities-list';
@@ -10,6 +10,8 @@ import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-pr
 import { changeCity } from '../../store/offers-process/offers-process';
 import { OfferList } from '../../components/offers-list/offer-list';
 import { OffersCardPrefix } from '../../models/card-prefixes';
+import { SortType } from '../../models/sort-type';
+import { CardOffer } from '../../models/offers';
 
 
 function MainPage() : JSX.Element {
@@ -19,6 +21,29 @@ function MainPage() : JSX.Element {
   const filteredOffers = useSelector(getOffersByCity);
 
   const [currentOfferId, setActiveOfferId] = useState('');
+  const [currentSortType, setSortType] = useState(SortType.Popular);
+  const [sortedOffers, setSortedOffers] = useState<CardOffer[]>(filteredOffers.slice());
+  const [isSortOpen, setIsSortOpen] = useState<boolean>();
+
+  useEffect(() => {
+    switch (currentSortType) {
+      case SortType.Popular:
+        setSortedOffers(filteredOffers.slice());
+        break;
+
+      case SortType.PriceHighToLow:
+        setSortedOffers(filteredOffers.slice().sort((a, b) => b.price - a.price));
+        break;
+
+      case SortType.PriceLowToHigh:
+        setSortedOffers(filteredOffers.slice().sort((a, b) => a.price - b.price));
+        break;
+
+      case SortType.TopRatedFirst:
+        setSortedOffers(filteredOffers.slice().sort((a, b) => b.rating - a.rating));
+        break;
+    }
+  }, [filteredOffers, currentSortType, currentCity]);
 
   const onCityChange = (city: City) => {
     dispatch(changeCity(city));
@@ -35,22 +60,37 @@ function MainPage() : JSX.Element {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{filteredOffers.length} places to stay in {currentCity.name}</b>
-                <form className="places__sorting" action="#" method="get">
+                <form className="places__sorting" action="#" method="get"
+                  onClick={ () => setIsSortOpen(!isSortOpen)}
+                >
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex={0}>
-                      Popular
+                    {currentSortType}
                     <svg className="places__sorting-arrow" width="7" height="4">
                       <use xlinkHref="#icon-arrow-select"></use>
                     </svg>
                   </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                    <li className="places__option" tabIndex={0}>Price: low to high</li>
-                    <li className="places__option" tabIndex={0}>Price: high to low</li>
-                    <li className="places__option" tabIndex={0}>Top rated first</li>
+                  <ul className={`places__options places__options--custom ${isSortOpen && 'places__options--opened'}`}>
+                    {
+                      Object.values(SortType).map((sortType) => (
+                        <li
+                          className={`places__option ${sortType === currentSortType && 'places__option--active'}`}
+                          tabIndex={0}
+                          onClick={() => {
+                            setSortType(sortType);
+                            setIsSortOpen(false);
+                          }}
+                          key={sortType}
+                        >
+                          {sortType}
+                        </li>
+
+                      )
+                      )
+                    }
                   </ul>
                 </form>
-                <OfferList offers={filteredOffers} setActiveOfferFunc={setActiveOfferId} cardPrefix={OffersCardPrefix.Cities}/>
+                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardPrefix={OffersCardPrefix.Cities}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
