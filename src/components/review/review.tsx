@@ -1,13 +1,13 @@
-import { Review } from "../../models/review";
-import { GetPersentsFromRating } from "../rating/rating";
+import { Review } from '../../models/review';
+import { GetPersentsFromRating } from '../rating/rating';
 
 
 type ReviewProps = {
-  review: Review
+  review: Review;
 }
 
 const monthNames = ['January', 'February', 'March', 'April',
-   'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export function ReviewComp({review}: ReviewProps): JSX.Element{
   return(
@@ -32,7 +32,7 @@ export function ReviewComp({review}: ReviewProps): JSX.Element{
         </p>
         <time className="reviews__time" dateTime={review.date.toDateString()}>
           {`${monthNames[review.date.getMonth()]} ${review.date.getFullYear()}`}April 2019
-          </time>
+        </time>
       </div>
     </li>
   );

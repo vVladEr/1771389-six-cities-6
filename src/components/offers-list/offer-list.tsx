@@ -12,7 +12,7 @@ type OffersProps = {
 
 export function OfferList({offers, setActiveOfferFunc, cardPrefix} : OffersProps): JSX.Element {
   return(
-    <div className={`${cardPrefix}__places-list places__list ${cardPrefix === OffersCardPrefix.Cities ? "tabs__content" : ""}`}>
+    <div className={`${cardPrefix}__places-list places__list ${cardPrefix === OffersCardPrefix.Cities ? 'tabs__content' : ''}`}>
       {
         offers.map((offer) => (
           <OfferCard

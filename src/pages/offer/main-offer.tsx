@@ -112,7 +112,7 @@ export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Eleme
             </div>
           </div>
           <section className="offer__reviews reviews">
-            <ReviewsList offerId={mainOffer.id}/>
+            <ReviewsList />
             <ReviewForm />
           </section>
         </div>

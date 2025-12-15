@@ -28,7 +28,6 @@ function MainPage() : JSX.Element {
     <body>
       <div className="page page--gray page--main">
         <Header/>
-
         <main className="page__main page__main--index">
           <CitiesList currentCity={currentCity} cities={cities} onCityChange={onCityChange} />
           <div className="cities">

@@ -12,7 +12,7 @@ type OfferPageProps = {
 function OfferPage({fullOffers}: OfferPageProps) : JSX.Element {
   const {id} = useParams();
   const offer: Offer | undefined = fullOffers.find((possibleOffer) => possibleOffer.id === id);
-  const offersNearBy: CardOffer[] = []
+  const offersNearBy: CardOffer[] = [];
   return(
     <body>
       <div className="page">
