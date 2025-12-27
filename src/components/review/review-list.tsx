@@ -3,7 +3,7 @@ import { ReviewComp } from './review';
 import { Reviews } from '../../models/review';
 
 type ReviewListProps = {
-  reviews: Reviews
+  reviews: Reviews;
 }
 
 export function ReviewsList({reviews}: ReviewListProps): JSX.Element{

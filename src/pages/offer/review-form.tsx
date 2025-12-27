@@ -8,11 +8,11 @@ import { useAppDispatch } from '../../hooks';
 import { sendCommentAction } from '../../store/api-actions';
 
 type ReviewFormProps ={
-  offerId: string
+  offerId: string;
 }
 
 export function ReviewForm({offerId}: ReviewFormProps) : JSX.Element{
-  const authStatus = useSelector(getAuthStatus)
+  const authStatus = useSelector(getAuthStatus);
   const dispatch = useAppDispatch();
   const [reviewFormData, setReviewFormData] = React.useState(
     {
@@ -30,9 +30,9 @@ export function ReviewForm({offerId}: ReviewFormProps) : JSX.Element{
   const handleSubmitingComment = (evt: FormEvent) => {
     evt.preventDefault();
     dispatch(sendCommentAction({
-              offerId: offerId,
-              comment: reviewFormData.review,
-              rating: reviewFormData.rating}));
+      offerId: offerId,
+      comment: reviewFormData.review,
+      rating: reviewFormData.rating}));
   };
 
   return(

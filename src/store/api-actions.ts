@@ -31,7 +31,7 @@ export const fetchNearByOffersAction = createAsyncThunk<CardOffer[], string, {
 }>(
   'offersNearby/fetch',
   async(offerId, {extra: api}) => {
-    const {data} = await api.get<CardOffer[]>(APIRoute.Offers + `/${offerId}/nearby`);
+    const {data} = await api.get<CardOffer[]>(`${APIRoute.Offers }/${offerId}/nearby`);
     return data.splice(0, 3);
   }
 );
@@ -43,8 +43,7 @@ export const fetchOfferAction = createAsyncThunk<Offer, string, {
 }>(
   'offer/fetch',
   async(offerId, {extra: api}) => {
-    const {data} = await api.get<Offer>(APIRoute.Offers + `/${offerId}`);
-    console.log(data)
+    const {data} = await api.get<Offer>(`${APIRoute.Offers }/${offerId}`);
     return data;
   }
 );
@@ -56,7 +55,7 @@ export const fetchCommentsAction = createAsyncThunk<Reviews, string, {
 }>(
   'comments/fetch',
   async(offerId, {extra: api}) => {
-    const {data} = await api.get<Reviews>(APIRoute.Comments + `/${offerId}`);
+    const {data} = await api.get<Reviews>(`${APIRoute.Comments }/${offerId}`);
     return data;
   }
 );
@@ -68,9 +67,9 @@ export const sendCommentAction = createAsyncThunk<void, ReviewFormData, {
 }>(
   'comments/send',
   async({offerId, comment, rating}, {dispatch, extra: api}) => {
-    const parsedRating : Number = Number(rating)
-    await api.post<Review>(APIRoute.Comments + `/${offerId}`, {comment, rating: parsedRating});
-    dispatch(fetchCommentsAction(offerId))
+    const parsedRating : number = Number(rating);
+    await api.post<Review>(`${APIRoute.Comments }/${offerId}`, {comment, rating: parsedRating});
+    dispatch(fetchCommentsAction(offerId));
   }
 );
 

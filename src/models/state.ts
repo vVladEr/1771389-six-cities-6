@@ -13,7 +13,7 @@ export type OffersState = {
 
 export type OfferState = {
   offer?: Offer | null;
-  nearByOffers: CardOffer[]
+  nearByOffers: CardOffer[];
   comments: Reviews;
   isLoadingOffer: boolean;
 }

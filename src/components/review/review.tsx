@@ -11,12 +11,12 @@ const monthNames = ['January', 'February', 'March', 'April',
 
 export function ReviewComp({review}: ReviewProps): JSX.Element{
   const parsedReview: Review = {
-      id: review.id,
-      date: new Date(review.date),
-      user: review.user,
-      comment: review.comment,
-      rating: review.rating,
-  }
+    id: review.id,
+    date: new Date(review.date),
+    user: review.user,
+    comment: review.comment,
+    rating: review.rating,
+  };
   return(
     <li className="reviews__item">
       <div className="reviews__user user">
