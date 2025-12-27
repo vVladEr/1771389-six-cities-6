@@ -17,6 +17,23 @@ type MainOfferProps = {
 
 export function MainOffer({mainOffer,  offersNearBy, comments}: MainOfferProps) : JSX.Element{
   const currentCity = useSelector(getCurCity);
+  const points = offersNearBy.map(
+          (offer) => {
+            const loc : MarkedPlaceLocation =
+              {
+                offerId : offer.id,
+                latitude : offer.location.latitude,
+                longitude : offer.location.longitude,
+                zoom : offer.location.zoom
+              };
+            return loc;
+          });
+  points.push({
+    offerId: mainOffer.id,
+    latitude: mainOffer.location.latitude,
+    longitude : mainOffer.location.longitude,
+    zoom : mainOffer.location.zoom
+  })
   return(
     <section className="offer">
       <div className="offer__gallery-container container">
@@ -116,18 +133,7 @@ export function MainOffer({mainOffer,  offersNearBy, comments}: MainOfferProps) 
         </div>
       </div>
       <section className="offer__map map">
-        <OffersMap city={currentCity} selectedPointId={mainOffer.id} points={offersNearBy.map(
-          (offer) => {
-            const loc : MarkedPlaceLocation =
-              {
-                offerId : offer.id,
-                latitude : offer.location.latitude,
-                longitude : offer.location.longitude,
-                zoom : offer.location.zoom
-              };
-            return loc;
-          }
-        )}
+        <OffersMap city={currentCity} selectedPointId={mainOffer.id} points={points}
         />
       </section>
     </section>
