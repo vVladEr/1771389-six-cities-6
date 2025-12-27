@@ -9,7 +9,8 @@ import {UserData} from '../models/user-data';
 import { FullUserData } from '../models/full-user-data';
 import { setAuthStatus, setCurUserEmail, setCurUserImage } from './user-process/user-process';
 import { redirectToRoute } from './action';
-import { Reviews } from '../models/review';
+import { Review, Reviews } from '../models/review';
+import { ReviewFormData } from '../models/review-form-data';
 
 export const fetchOffersAction = createAsyncThunk<CardOffer[], undefined, {
   dispatch: AppDispatch;
@@ -53,10 +54,23 @@ export const fetchCommentsAction = createAsyncThunk<Reviews, string, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'offers-nearby/fetch',
+  'comments/fetch',
   async(offerId, {extra: api}) => {
     const {data} = await api.get<Reviews>(APIRoute.Comments + `/${offerId}`);
     return data;
+  }
+);
+
+export const sendCommentAction = createAsyncThunk<void, ReviewFormData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/send',
+  async({offerId, comment, rating}, {dispatch, extra: api}) => {
+    const parsedRating : Number = Number(rating)
+    await api.post<Review>(APIRoute.Comments + `/${offerId}`, {comment, rating: parsedRating});
+    dispatch(fetchCommentsAction(offerId))
   }
 );
 

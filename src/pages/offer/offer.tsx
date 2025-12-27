@@ -33,10 +33,11 @@ function OfferPage() : JSX.Element {
 
 
 
-  if (mainOffer === undefined){
-    if (isOfferLoading)
-      return <LoadingScreen />
+  if (isOfferLoading && mainOffer === undefined ){
+    return <LoadingScreen />
+  }
 
+  if (mainOffer === undefined){
     return <Navigate to="/*" replace/>;
   }
 

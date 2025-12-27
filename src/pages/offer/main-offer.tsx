@@ -7,6 +7,8 @@ import { MarkedPlaceLocation } from '../../models/place-location';
 import { useSelector } from 'react-redux';
 import { getCurCity } from '../../store/offers-process/selectors';
 import { Reviews } from '../../models/review';
+import { getAuthStatus } from '../../store/user-process/selectors';
+import { AuthorizationStatus } from '../../const';
 
 type MainOfferProps = {
   mainOffer: Offer;
@@ -17,6 +19,7 @@ type MainOfferProps = {
 
 export function MainOffer({mainOffer,  offersNearBy, comments}: MainOfferProps) : JSX.Element{
   const currentCity = useSelector(getCurCity);
+  const authStatus = useSelector(getAuthStatus);
   const points = offersNearBy.map(
           (offer) => {
             const loc : MarkedPlaceLocation =
@@ -128,7 +131,7 @@ export function MainOffer({mainOffer,  offersNearBy, comments}: MainOfferProps) 
           </div>
           <section className="offer__reviews reviews">
             <ReviewsList  reviews={comments}/>
-            <ReviewForm />
+            {authStatus === AuthorizationStatus.Auth && <ReviewForm  offerId={mainOffer.id}/>}
           </section>
         </div>
       </div>
