@@ -19,8 +19,8 @@ export const offerProcess = createSlice({
       state.isLoadingOffer = true;
     })
     .addCase(fetchOfferAction.fulfilled, (state, action) => {
-      state.isLoadingOffer = false;
       state.offer = action.payload
+      state.isLoadingOffer = false;
     })
     .addCase(fetchNearByOffersAction.fulfilled, (state, action) => {
       state.nearByOffers = action.payload

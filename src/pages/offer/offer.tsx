@@ -18,10 +18,10 @@ function OfferPage() : JSX.Element {
   const comments = useSelector(getComments);
   const isOfferLoading = useSelector(getIsLoadingOffer);
   const {id} = useParams();
-  console.log(`id: ${id}`)
+
   if (id === undefined)
   {
-    return <Navigate to="*" replace/>;
+    return <Navigate to="/*" replace/>;
   }
 
   useEffect( () =>{
@@ -33,17 +33,13 @@ function OfferPage() : JSX.Element {
 
 
 
-  if (isOfferLoading || mainOffer == undefined){
-    return <LoadingScreen />
+  if (mainOffer === undefined){
+    if (isOfferLoading)
+      return <LoadingScreen />
+
+    return <Navigate to="/*" replace/>;
   }
 
-  console.log(`mainoffer: ${mainOffer}`)
-  if (mainOffer === undefined)
-  {
-    return <Navigate to="*" replace/>;
-  }
-
-  console.log(`finish loading mainOffer: ${mainOffer}`)
   return(
     <body>
       <div className="page">
