@@ -21,7 +21,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, cardPrefix}: OfferC
             </div>
       }
       <div className={`${cardPrefix}__image-wrapper place-card__image-wrapper`}>
-        <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })} replace>
+        <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })}>
           <img className="place-card__image" src={ offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
@@ -45,7 +45,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, cardPrefix}: OfferC
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`offer/${offer.id}`}>
+          <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })}>
             {offer.title}
           </Link>
         </h2>
