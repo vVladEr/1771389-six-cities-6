@@ -4,7 +4,7 @@ import { NameSpaces } from "../../const";
 import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from "../api-actions";
 
 const initialState : OfferState = {
-  offer: undefined,
+  offer: null,
   nearByOffers: [],
   comments: [],
   isLoadingOffer: false
@@ -21,6 +21,10 @@ export const offerProcess = createSlice({
     .addCase(fetchOfferAction.fulfilled, (state, action) => {
       state.offer = action.payload
       state.isLoadingOffer = false;
+    })
+    .addCase(fetchOfferAction.rejected, (state) => {
+      state.isLoadingOffer = false;
+      state.offer = null
     })
     .addCase(fetchNearByOffersAction.fulfilled, (state, action) => {
       state.nearByOffers = action.payload

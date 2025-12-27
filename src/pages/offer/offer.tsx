@@ -25,19 +25,18 @@ function OfferPage() : JSX.Element {
   }
 
   useEffect( () =>{
-    console.log("fetch data from server")
     dispatch(fetchOfferAction(id))
     dispatch(fetchNearByOffersAction(id))
     dispatch(fetchCommentsAction(id))
-  }, [id]);
+  }, [dispatch, id]);
 
 
 
-  if (isOfferLoading && mainOffer === undefined ){
+  if (isOfferLoading){
     return <LoadingScreen />
   }
 
-  if (mainOffer === undefined){
+  if (!mainOffer){
     return <Navigate to="/*" replace/>;
   }
 
@@ -47,7 +46,7 @@ function OfferPage() : JSX.Element {
         <Header/>
 
         <main className="page__main page__main--offer">
-          <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer} comments={comments}/>
+          <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer!} comments={comments}/>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
