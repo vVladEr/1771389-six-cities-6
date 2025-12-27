@@ -4,7 +4,7 @@ import { City } from '../../models/city';
 import { CardOffer } from '../../models/offers';
 import { State } from '../../models/state';
 
-export const getCurCity = (state: State): City => state[NameSpaces.Offers].city;
+export const getCurCity = (state: State): City => state.OFFERS.city;
 export const getAllCities = (state: State): City[] => state[NameSpaces.Offers].cities;
 export const getOffers = (state: State): CardOffer[] => state[NameSpaces.Offers].places;
 export const getOffersByCity = createSelector(
