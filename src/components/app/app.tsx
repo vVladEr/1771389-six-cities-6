@@ -13,7 +13,7 @@ import browserHistory from '../../browser-history';
 import { getIsLoading } from '../../store/offers-process/selectors';
 
 function App() {
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(getIsLoading)
 
   if (isLoading) {
     return(
@@ -42,7 +42,7 @@ function App() {
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferPage fullOffers={[]}/>}
+          element={<OfferPage />}
         />
         <Route
           path="*"
