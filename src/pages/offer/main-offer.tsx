@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { CardOffer, Offer } from '../../models/offers';
+import { CardOffer} from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 import { ReviewForm } from './review-form';
 import { ReviewsList } from '../../components/review/review-list';
@@ -7,16 +7,19 @@ import OffersMap from '../../components/offers-map/offers-map';
 import { MarkedPlaceLocation } from '../../models/place-location';
 import { useSelector } from 'react-redux';
 import { getCurCity } from '../../store/offers-process/selectors';
+import { getComments, getOffer } from '../../store/offer-process/selectors';
 
 type MainOfferProps = {
-  mainOffer: Offer | undefined;
   offersNearBy: CardOffer[];
 }
 
 
-export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Element{
+export function MainOffer({offersNearBy}: MainOfferProps) : JSX.Element{
   const currentCity = useSelector(getCurCity);
-  if (!mainOffer) {
+  const mainOffer = useSelector(getOffer);
+  const comments = useSelector(getComments);
+  if (mainOffer === undefined)
+  {
     return <Navigate to="*"/>;
   }
   return(
@@ -112,7 +115,7 @@ export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Eleme
             </div>
           </div>
           <section className="offer__reviews reviews">
-            <ReviewsList />
+            <ReviewsList  reviews={comments}/>
             <ReviewForm />
           </section>
         </div>
