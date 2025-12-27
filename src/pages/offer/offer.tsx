@@ -2,13 +2,13 @@ import { Navigate, useParams } from 'react-router-dom';
 import { MainOffer } from './main-offer';
 import { Header } from '../../components/header/header';
 import { OfferList } from '../../components/offers-list/offer-list';
-import { OffersCardPrefix } from '../../models/card-prefixes';
 import { useAppDispatch } from '../../hooks';
 import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../../store/api-actions';
 import { useSelector } from 'react-redux';
 import { getComments, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
 import { useEffect } from 'react';
 import { LoadingScreen } from '../loading/loading';
+import { CardType } from '../../models/card-types';
 
 function OfferPage() : JSX.Element {
 
@@ -54,7 +54,7 @@ function OfferPage() : JSX.Element {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardPrefix={OffersCardPrefix.NearPlaces}/>
+              <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}/>
             </section>
           </div>
         </main>

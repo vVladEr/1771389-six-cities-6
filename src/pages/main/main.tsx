@@ -9,9 +9,9 @@ import { CitiesList } from './cities-list';
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 import { changeCity } from '../../store/offers-process/offers-process';
 import { OfferList } from '../../components/offers-list/offer-list';
-import { OffersCardPrefix } from '../../models/card-prefixes';
 import { SortType } from '../../models/sort-type';
 import { CardOffer } from '../../models/offers';
+import { CardType } from '../../models/card-types';
 
 
 function MainPage() : JSX.Element {
@@ -90,7 +90,7 @@ function MainPage() : JSX.Element {
                     }
                   </ul>
                 </form>
-                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardPrefix={OffersCardPrefix.Cities}/>
+                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardType={CardType.Cities}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
