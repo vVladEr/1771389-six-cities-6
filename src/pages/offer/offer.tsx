@@ -11,31 +11,33 @@ import { useEffect } from 'react';
 import { LoadingScreen } from '../loading/loading';
 
 function OfferPage() : JSX.Element {
-  console.log("render offer page")
+
   const dispatch = useAppDispatch();
   const offersNearby = useSelector(getOffersNearBy);
   const mainOffer = useSelector(getOffer);
   const comments = useSelector(getComments);
   const isOfferLoading = useSelector(getIsLoadingOffer);
   const {id} = useParams();
+  console.log(`id: ${id}`)
   if (id === undefined)
   {
     return <Navigate to="*" replace/>;
   }
 
   useEffect( () =>{
+    console.log("fetch data from server")
     dispatch(fetchOfferAction(id))
     dispatch(fetchNearByOffersAction(id))
     dispatch(fetchCommentsAction(id))
-  }, []);
+  }, [id]);
 
 
 
-  if (isOfferLoading){
+  if (isOfferLoading || mainOffer == undefined){
     return <LoadingScreen />
   }
 
-
+  console.log(`mainoffer: ${mainOffer}`)
   if (mainOffer === undefined)
   {
     return <Navigate to="*" replace/>;

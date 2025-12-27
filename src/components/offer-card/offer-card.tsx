@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import { CardOffer } from '../../models/offers';
 import { GetPersentsFromRating } from '../rating/rating';
 import { OffersCardPrefix } from '../../models/card-prefixes';
+import { AppRoute } from '../../const';
 
 type OfferCardProps = {
   offer: CardOffer;
@@ -20,7 +21,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, cardPrefix}: OfferC
             </div>
       }
       <div className={`${cardPrefix}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`offer/${offer.id}`}>
+        <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })} replace>
           <img className="place-card__image" src={ offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
