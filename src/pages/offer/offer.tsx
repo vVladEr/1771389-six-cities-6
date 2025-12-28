@@ -8,6 +8,8 @@ import { getComments, getIfOfferFound, getIsLoadingOffer, getOffer, getOffersNea
 import { useEffect } from 'react';
 import { LoadingScreen } from '../loading/loading';
 import { CardType } from '../../models/card-types';
+import { switchFavoriteStatusInNearByOffer } from '../../store/offer-process/offer-process';
+import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 
 function OfferPage() : JSX.Element {
 
@@ -28,12 +30,19 @@ function OfferPage() : JSX.Element {
 
   }, [dispatch, id]);
 
+
+
   if (isOfferLoading){
     return <LoadingScreen />;
   }
 
   if (!isOfferFound){
     return <Navigate to="/*" replace/>;
+  }
+
+  const onBookmarkClick = (nearByOfferId: string) => {
+    dispatch(switchFavoriteStatusInNearByOffer(nearByOfferId));
+    dispatch(switchFavoriteStatusInOffers(nearByOfferId));
   }
 
   return(
@@ -46,7 +55,8 @@ function OfferPage() : JSX.Element {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}/>
+              <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}
+                onBookmarkClick={onBookmarkClick}/>
             </section>
           </div>
         </main>

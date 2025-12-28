@@ -36,7 +36,7 @@ function App() {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute>
-              <FavoritesPage favoriteOffers={[]}/>
+              <FavoritesPage/>
             </PrivateRoute>
           }
         />

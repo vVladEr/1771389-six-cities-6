@@ -3,13 +3,18 @@ import { useAppDispatch, useAppSelector } from "../../hooks"
 import { getAuthStatus } from "../../store/user-process/selectors"
 import { redirectToRoute } from "../../store/action"
 import { updateFavoriteAction } from "../../store/api-actions"
+import { BookmarkType } from "./bookmark-prefix"
 
 type BookmarkProps = {
   isActive: boolean,
-  offerId: string
+  offerId: string,
+  width: number,
+  height: number,
+  bookmarkType: BookmarkType
+  onBookmarkClick: (offerId: string) => void
 }
 
-export function Bookmark({isActive, offerId} : BookmarkProps): JSX.Element {
+export function Bookmark({isActive, offerId, width, height, bookmarkType, onBookmarkClick} : BookmarkProps): JSX.Element {
   const dispatch = useAppDispatch()
   const authStatus = useAppSelector(getAuthStatus)
 
@@ -19,13 +24,14 @@ export function Bookmark({isActive, offerId} : BookmarkProps): JSX.Element {
           return
     }
     dispatch(updateFavoriteAction({offerId: offerId, isFavorite: !isActive}))
+    onBookmarkClick(offerId)
   }
 
   return(
-    <button className={`place-card__bookmark-button ${isActive ? 'place-card__bookmark-button--active' : ''} button`}
+    <button className={`${bookmarkType}__bookmark-button ${isActive ? `${bookmarkType}__bookmark-button--active` : ''} button`}
     type="button"
     onClick={handleClick}>
-      <svg className="place-card__bookmark-icon" width="18" height="19">
+      <svg className={`${bookmarkType}__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
       <span className="visually-hidden">To bookmarks</span>

@@ -146,7 +146,8 @@ export const updateFavoriteAction = createAsyncThunk<void, UpdateFavoriteData, {
   extra: AxiosInstance;
 }>(
   'favorite/update',
-  async({offerId, isFavorite}, {extra: api}) => {
+  async({offerId, isFavorite}, {extra: api, dispatch}) => {
     await api.post(`${APIRoute.Favorites}/${offerId}/${ isFavorite ? 1 : 0}`);
+    dispatch(fetchFavoritesAction())
   }
 );

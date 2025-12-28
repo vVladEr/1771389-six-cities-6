@@ -16,12 +16,13 @@ function GetUniqueCityNames(offers: CardOffer[]): string[] {
 
 
 function FavoritesPage() : JSX.Element {
+    console.log("render")
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(getFavoriteOffers);
 
   useEffect(() => {
     dispatch(fetchFavoritesAction());
-  }, [dispatch])
+  }, [])
 
   return(
     <body>

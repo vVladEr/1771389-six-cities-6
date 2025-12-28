@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { logoutAction } from '../../store/api-actions';
+import { fetchFavoritesAction, logoutAction } from '../../store/api-actions';
 import { getAuthStatus, getCurUserEmail, getCurUserImage } from '../../store/user-process/selectors';
+import { getFavoriteOffers } from '../../store/favorites-process/selectors';
+import { useEffect } from 'react';
 
 export function Header() : JSX.Element{
   const dispatch = useAppDispatch();
@@ -10,6 +12,11 @@ export function Header() : JSX.Element{
   const authorizationStatus = useAppSelector(getAuthStatus);
   const curUserName = useAppSelector(getCurUserEmail);
   const curUserAvatarPatch = useAppSelector(getCurUserImage);
+  const numberOfFavorites = useAppSelector(getFavoriteOffers).length;
+
+  useEffect(() => {
+      dispatch(fetchFavoritesAction())
+  }, [numberOfFavorites])
 
   const handleLogOut = () => {
     dispatch(logoutAction());
@@ -35,7 +42,7 @@ export function Header() : JSX.Element{
                           <img className="header__avatar" src={curUserAvatarPatch} alt="user avatar"/>
                         </div>
                         <span className="header__user-name user__name">{curUserName}</span>
-                        <span className="header__favorite-count">0</span>
+                        <span className="header__favorite-count">{numberOfFavorites}</span>
                       </Link>
                     </li>
                     <li className="header__nav-item">

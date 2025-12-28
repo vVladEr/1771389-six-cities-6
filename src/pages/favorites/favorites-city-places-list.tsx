@@ -1,6 +1,9 @@
 import { OfferList } from '../../components/offers-list/offer-list';
+import { useAppDispatch } from '../../hooks';
 import { CardType } from '../../models/card-types';
 import { CardOffer } from '../../models/offers';
+import { switchFavoriteStatusInFavoriteOffer } from '../../store/favorites-process/favorites-process';
+import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 
 type FavoritesCityPlacesListProps = {
   cityName: string;
@@ -9,7 +12,16 @@ type FavoritesCityPlacesListProps = {
 
 
 export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): JSX.Element {
+
+  const dispatch = useAppDispatch();
+  const onBookmarkClick = (offerId: string) => {
+    dispatch(switchFavoriteStatusInFavoriteOffer(offerId));
+    dispatch(switchFavoriteStatusInOffers(offerId));
+  }
+
+
   return(
+
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
@@ -18,7 +30,8 @@ export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): J
           </a>
         </div>
       </div>
-      <OfferList cardType={CardType.Favorites} offers={props.favoritesCityPlaces} setActiveOfferFunc={() => {}}/>
+      <OfferList cardType={CardType.Favorites} offers={props.favoritesCityPlaces} setActiveOfferFunc={() => {}}
+        onBookmarkClick={onBookmarkClick}/>
     </li>
   );
 }

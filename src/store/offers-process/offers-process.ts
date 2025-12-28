@@ -18,6 +18,13 @@ export const offersProcess = createSlice({
   reducers: {
     changeCity: (state, action: PayloadAction<City>) => {
       state.city = action.payload;
+    },
+    switchFavoriteStatusInOffers: (state, action: PayloadAction<string>) => {
+      const index = state.offers.findIndex(offer => offer.id === action.payload)
+      if (index === -1){
+        return;
+      }
+      state.offers[index] = {...state.offers[index], isFavorite: !state.offers[index].isFavorite}
     }
   },
   extraReducers(builder){
@@ -36,4 +43,4 @@ export const offersProcess = createSlice({
 }
 );
 
-export const {changeCity} = offersProcess.actions;
+export const {switchFavoriteStatusInOffers, changeCity} = offersProcess.actions;

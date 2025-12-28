@@ -8,7 +8,11 @@ import { getCurCity } from '../../store/offers-process/selectors';
 import { Reviews } from '../../models/review';
 import { getAuthStatus } from '../../store/user-process/selectors';
 import { AuthorizationStatus, NumberOfImages } from '../../const';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { Bookmark } from '../../components/bookmark/bookmark';
+import { BookmarkType } from '../../components/bookmark/bookmark-prefix';
+import { switchFavoriteStatusInMainOffer } from '../../store/offer-process/offer-process';
+import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 
 type MainOfferProps = {
   mainOffer: Offer;
@@ -18,8 +22,15 @@ type MainOfferProps = {
 
 
 export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) : JSX.Element{
+  const dispatch = useAppDispatch();
   const currentCity = useAppSelector(getCurCity);
   const authStatus = useAppSelector(getAuthStatus);
+
+  const onMainOfferBookMarkClick = () =>{
+    dispatch(switchFavoriteStatusInMainOffer())
+    dispatch(switchFavoriteStatusInOffers(mainOffer.id));
+  }
+
   const points = offersNearBy.map(
     (offer) => {
       const loc : MarkedPlaceLocation =
@@ -63,12 +74,9 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
             <h1 className="offer__name">
               {mainOffer.title}
             </h1>
-            <button className="offer__bookmark-button button" type="button">
-              <svg className="offer__bookmark-icon" width="31" height="33">
-                <use xlinkHref="#icon-bookmark"></use>
-              </svg>
-              <span className="visually-hidden">To bookmarks</span>
-            </button>
+            <Bookmark offerId={mainOffer.id} isActive={mainOffer.isFavorite}
+              width={31} height={33} bookmarkType={BookmarkType.Offer}
+              onBookmarkClick={onMainOfferBookMarkClick}/>
           </div>
           <div className="offer__rating rating">
             <div className="offer__stars rating__stars">

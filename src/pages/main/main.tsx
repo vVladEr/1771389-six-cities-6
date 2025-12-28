@@ -1,16 +1,15 @@
 import { Header } from '../../components/header/header';
 import { City } from '../../models/city';
-import { useDispatch } from 'react-redux';
 import { CitiesList } from './cities-list';
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 import { changeCity } from '../../store/offers-process/offers-process';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { MainOffersContainerEmpty } from '../../components/main-offers-container-empty/main-offers-container-empty';
 import { MainOffersContainerFull } from '../../components/main-offers-container-full/main-offers-container-full';
 
 
 function MainPage() : JSX.Element {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const currentCity = useAppSelector(getCurCity);
   const cities = useAppSelector(getAllCities);
   const filteredOffers = useAppSelector(getOffersByCity);

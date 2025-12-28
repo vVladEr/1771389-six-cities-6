@@ -6,7 +6,8 @@ import { SortType } from "../../models/sort-type";
 import { OfferList } from "../offers-list/offer-list";
 import OffersMap from "../offers-map/offers-map";
 import { City } from "../../models/city";
-
+import { useAppDispatch } from "../../hooks";
+import { switchFavoriteStatusInOffers } from "../../store/offers-process/offers-process";
 type FullOffersContainerProps = {
   currentCity: City;
   filteredOffers: CardOffer[]
@@ -17,6 +18,7 @@ export function MainOffersContainerFull({currentCity, filteredOffers}: FullOffer
     const [currentSortType, setSortType] = useState(SortType.Popular);
     const [sortedOffers, setSortedOffers] = useState<CardOffer[]>(filteredOffers.slice());
     const [isSortOpen, setIsSortOpen] = useState<boolean>();
+    const dispatch = useAppDispatch();
 
       useEffect(() => {
         switch (currentSortType) {
@@ -38,6 +40,10 @@ export function MainOffersContainerFull({currentCity, filteredOffers}: FullOffer
         }
       }, [filteredOffers, currentSortType, currentCity]);
 
+
+  const onBookmarkClick = (offerId: string) => {
+    dispatch(switchFavoriteStatusInOffers(offerId))
+  }
 
   return(
     <div className="cities__places-container container">
@@ -74,7 +80,8 @@ export function MainOffersContainerFull({currentCity, filteredOffers}: FullOffer
                     }
                   </ul>
                 </form>
-                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardType={CardType.Cities}/>
+                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardType={CardType.Cities}
+                onBookmarkClick={onBookmarkClick}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">

@@ -4,15 +4,17 @@ import { GetPersentsFromRating } from '../rating/rating';
 import { AppRoute } from '../../const';
 import { CardType, getCardClassName, getImageWrapperClassName } from '../../models/card-types';
 import { Bookmark } from '../bookmark/bookmark';
+import { BookmarkType } from '../bookmark/bookmark-prefix';
 
 type OfferCardProps = {
   offer: CardOffer;
   onMouseOver: () => void;
   onMouseLeave: () => void;
+  onBookmarkClick: (offerId: string) => void
   cardType: CardType;
 }
 
-export function OfferCard({offer, onMouseOver, onMouseLeave, cardType}: OfferCardProps): JSX.Element{
+export function OfferCard({offer, onMouseOver, onMouseLeave, onBookmarkClick, cardType}: OfferCardProps): JSX.Element{
   return(
     <article className={getCardClassName(cardType)} onMouseEnter={onMouseOver} onMouseLeave={onMouseLeave}>
       {
@@ -32,7 +34,8 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, cardType}: OfferCar
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <Bookmark offerId={offer.id} isActive={offer.isFavorite}/>
+          <Bookmark offerId={offer.id} isActive={offer.isFavorite}
+           width={18} height={19} bookmarkType={BookmarkType.Card} onBookmarkClick={onBookmarkClick}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
