@@ -1,7 +1,7 @@
-import { City } from "../../types/city"
+import { City } from '../../types/city';
 
 type MainOffersContainerEmptyProps = {
-  currentCity: City
+  currentCity: City;
 }
 
 

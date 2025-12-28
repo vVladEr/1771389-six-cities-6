@@ -11,14 +11,11 @@ export function ReviewsList({reviews}: ReviewListProps): JSX.Element{
   const [correctReviews, setCorrectReviews] = useState<Reviews>([]);
 
   useEffect(() =>{
-    let tmpReviews = reviews.slice().sort((a, b) =>{
-      const dateA = new Date(a.date)
-      const dateB = new Date(b.date)
-      return dateB.getMilliseconds() - dateA.getMilliseconds()
-    } )
-    .slice(0, NumberOfReviews);
-
-    tmpReviews;
+    const tmpReviews = reviews.slice().sort((a, b) =>{
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB.getMilliseconds() - dateA.getMilliseconds();
+    }).slice(0, NumberOfReviews);
     setCorrectReviews(tmpReviews);
   }, [reviews]);
 

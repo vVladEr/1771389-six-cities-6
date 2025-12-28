@@ -1,4 +1,4 @@
 export type UpdateFavoriteData = {
-  offerId: string
-  isFavorite: boolean
+  offerId: string;
+  isFavorite: boolean;
 }

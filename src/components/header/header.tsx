@@ -15,8 +15,8 @@ export function Header() : JSX.Element{
   const numberOfFavorites = useAppSelector(getFavoriteOffers).length;
 
   useEffect(() => {
-      dispatch(fetchFavoritesAction())
-  }, [numberOfFavorites])
+    dispatch(fetchFavoritesAction());
+  }, [dispatch]);
 
   const handleLogOut = () => {
     dispatch(logoutAction());

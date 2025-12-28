@@ -10,7 +10,7 @@ type OfferCardProps = {
   offer: CardOffer;
   onMouseOver: () => void;
   onMouseLeave: () => void;
-  onBookmarkClick: (offerId: string) => void
+  onBookmarkClick: (offerId: string) => void;
   cardType: CardType;
 }
 
@@ -36,7 +36,8 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, onBookmarkClick, ca
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <Bookmark offerId={offer.id} isActive={offer.isFavorite}
-           width={18} height={19} bookmarkType={BookmarkType.Card} onBookmarkClick={onBookmarkClick}/>
+            width={18} height={19} bookmarkType={BookmarkType.Card} onBookmarkClick={onBookmarkClick}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

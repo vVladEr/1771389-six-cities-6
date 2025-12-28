@@ -16,17 +16,17 @@ export const offerProcess = createSlice({
   initialState,
   reducers: {
     switchFavoriteStatusInNearByOffer: (state, action: PayloadAction<string>) => {
-      const index = state.nearByOffers.findIndex(offer => offer.id === action.payload)
+      const index = state.nearByOffers.findIndex((offer) => offer.id === action.payload);
       if (index === -1){
         return;
       }
-      state.nearByOffers[index] = {...state.nearByOffers[index], isFavorite: !state.nearByOffers[index].isFavorite}
+      state.nearByOffers[index] = {...state.nearByOffers[index], isFavorite: !state.nearByOffers[index].isFavorite};
     },
     switchFavoriteStatusInMainOffer: (state) => {
       if (!state.offer){
         return;
       }
-      state.offer = {...state.offer, isFavorite: !state.offer.isFavorite}
+      state.offer = {...state.offer, isFavorite: !state.offer.isFavorite};
     }
   },
   extraReducers(builder){

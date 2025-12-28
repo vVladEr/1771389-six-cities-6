@@ -31,7 +31,6 @@ function OfferPage() : JSX.Element {
   }, [dispatch, id]);
 
 
-
   if (isOfferLoading){
     return <LoadingScreen />;
   }
@@ -43,7 +42,7 @@ function OfferPage() : JSX.Element {
   const onBookmarkClick = (nearByOfferId: string) => {
     dispatch(switchFavoriteStatusInNearByOffer(nearByOfferId));
     dispatch(switchFavoriteStatusInOffers(nearByOfferId));
-  }
+  };
 
   return(
     <body>
@@ -56,7 +55,8 @@ function OfferPage() : JSX.Element {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}
-                onBookmarkClick={onBookmarkClick}/>
+                onBookmarkClick={onBookmarkClick}
+              />
             </section>
           </div>
         </main>

@@ -6,7 +6,7 @@ import { OfferCard } from '../offer-card/offer-card';
 type OffersProps = {
   offers: CardOffer[];
   setActiveOfferFunc: (offerId: string) => void;
-  onBookmarkClick: (offerId: string) => void,
+  onBookmarkClick: (offerId: string) => void;
   cardType: CardType;
 }
 

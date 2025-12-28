@@ -27,9 +27,9 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
   const authStatus = useAppSelector(getAuthStatus);
 
   const onMainOfferBookMarkClick = () =>{
-    dispatch(switchFavoriteStatusInMainOffer())
+    dispatch(switchFavoriteStatusInMainOffer());
     dispatch(switchFavoriteStatusInOffers(mainOffer.id));
-  }
+  };
 
   const points = offersNearBy.map(
     (offer) => {
@@ -54,7 +54,7 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
       <div className="offer__gallery-container container">
         <div className="offer__gallery">
           {tmpImages.map((imageSrc, index) => (
-            <div className="offer__image-wrapper" key={`offer-image-${index}`}>
+            <div className="offer__image-wrapper" key={`offer-image-${mainOffer.id + index.toString()}`}>
               <img className="offer__image" src={imageSrc} alt="Photo studio" />
             </div>
           )
@@ -76,7 +76,8 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
             </h1>
             <Bookmark offerId={mainOffer.id} isActive={mainOffer.isFavorite}
               width={31} height={33} bookmarkType={BookmarkType.Offer}
-              onBookmarkClick={onMainOfferBookMarkClick}/>
+              onBookmarkClick={onMainOfferBookMarkClick}
+            />
           </div>
           <div className="offer__rating rating">
             <div className="offer__stars rating__stars">
@@ -109,7 +110,7 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
               {
                 mainOffer.goods.map((good, index) =>
                   (
-                    <li className="offer__inside-item" key={`good-${index}`}>
+                    <li className="offer__inside-item" key={`good-${mainOffer.id + index.toString()}`}>
                       {good}
                     </li>
                   ))

@@ -17,7 +17,7 @@ export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): J
   const onBookmarkClick = (offerId: string) => {
     dispatch(switchFavoriteStatusInFavoriteOffer(offerId));
     dispatch(switchFavoriteStatusInOffers(offerId));
-  }
+  };
 
 
   return(
@@ -31,7 +31,8 @@ export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): J
         </div>
       </div>
       <OfferList cardType={CardType.Favorites} offers={props.favoritesCityPlaces} setActiveOfferFunc={() => {}}
-        onBookmarkClick={onBookmarkClick}/>
+        onBookmarkClick={onBookmarkClick}
+      />
     </li>
   );
 }
