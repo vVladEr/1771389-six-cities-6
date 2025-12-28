@@ -11,6 +11,7 @@ import { setAuthStatus, setCurUserEmail, setCurUserImage } from './user-process/
 import { redirectToRoute } from './action';
 import { Review, Reviews } from '../models/review';
 import { ReviewFormData } from '../models/review-form-data';
+import { UpdateFavoriteData } from '../models/update-favorite-data';
 
 export const fetchOffersAction = createAsyncThunk<CardOffer[], undefined, {
   dispatch: AppDispatch;
@@ -124,4 +125,28 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     dispatch(setAuthStatus(AuthorizationStatus.NoAuth));
     dispatch(setCurUserEmail(''));
   },
+);
+
+
+export const fetchFavoritesAction = createAsyncThunk<CardOffer[], undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'favorites/fetch',
+  async(_arg, {extra: api}) => {
+    const {data} = await api.get<CardOffer[]>(`${APIRoute.Favorites}`);
+    return data;
+  }
+);
+
+export const updateFavoriteAction = createAsyncThunk<void, UpdateFavoriteData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'favorite/update',
+  async({offerId, isFavorite}, {extra: api}) => {
+    await api.post(`${APIRoute.Favorites}/${offerId}/${ isFavorite ? 1 : 0}`);
+  }
 );

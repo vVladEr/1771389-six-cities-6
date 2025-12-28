@@ -8,7 +8,7 @@ import { OffersState } from '../../models/state';
 const initialState: OffersState = {
   city: Paris,
   cities: DefaultCities,
-  places: [],
+  offers: [],
   isLoadingOffers: false,
 };
 
@@ -26,11 +26,11 @@ export const offersProcess = createSlice({
     })
     .addCase(fetchOffersAction.fulfilled, (state, action) => {
       state.isLoadingOffers = false;
-      state.places = action.payload;
+      state.offers = action.payload;
     })
     .addCase(fetchOffersAction.rejected, (state) => {
       state.isLoadingOffers = false;
-      state.places = [];
+      state.offers = [];
     });
   }
 }

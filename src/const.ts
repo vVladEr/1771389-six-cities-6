@@ -30,7 +30,8 @@ export enum NameSpaces {
   User = 'USER',
   Offers = 'OFFERS',
   Offer = 'OFFER',
-  Comments = 'COMMENTS'
+  Comments = 'COMMENTS',
+  Favorites = 'FAVORITES',
 }
 
 export const NumberOfReviews : number = 10;

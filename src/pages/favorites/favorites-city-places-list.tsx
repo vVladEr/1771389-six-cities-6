@@ -1,5 +1,6 @@
+import { OfferList } from '../../components/offers-list/offer-list';
+import { CardType } from '../../models/card-types';
 import { Offer } from '../../models/offers';
-import { FavoriteCard } from './favourite-card';
 
 type FavoritesCityPlacesListProps = {
   cityName: string;
@@ -17,13 +18,7 @@ export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): J
           </a>
         </div>
       </div>
-      <div className="favorites__places">
-        {
-          props.favoritesCityPlaces.map(
-            (place) => <FavoriteCard offer={place} key={place.id}/>
-          )
-        }
-      </div>
+      <OfferList cardType={CardType.Favorites} offers={props.favoritesCityPlaces} setActiveOfferFunc={() => {}}/>
     </li>
   );
 }

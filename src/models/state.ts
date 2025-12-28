@@ -7,8 +7,13 @@ import { Reviews } from './review.js';
 export type OffersState = {
   city: City;
   cities: Cities;
-  places: CardOffer[];
+  offers: CardOffer[];
   isLoadingOffers: boolean;
+}
+
+export type FavoritesState = {
+  favoriteOffers: CardOffer[];
+  isLoadingFavoritesOffers: boolean;
 }
 
 export type OfferState = {
