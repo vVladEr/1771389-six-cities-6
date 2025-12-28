@@ -1,0 +1,42 @@
+import { createSlice } from '@reduxjs/toolkit';
+import { OfferState } from '../../models/state';
+import { NameSpaces } from '../../const';
+import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../api-actions';
+
+const initialState : OfferState = {
+  offer: null,
+  nearByOffers: [],
+  comments: [],
+  isLoadingOffer: true,
+  isOfferFound: false
+};
+
+export const offerProcess = createSlice({
+  name: NameSpaces.Offer,
+  initialState,
+  reducers: {},
+  extraReducers(builder){
+    builder.addCase(fetchOfferAction.pending, (state) => {
+      state.isLoadingOffer = true;
+      state.isOfferFound = false;
+      state.offer = null;
+    })
+      .addCase(fetchOfferAction.fulfilled, (state, action) => {
+        state.offer = action.payload;
+        state.isOfferFound = true;
+        state.isLoadingOffer = false;
+      })
+      .addCase(fetchOfferAction.rejected, (state) => {
+        state.isOfferFound = false;
+        state.isLoadingOffer = false;
+        state.offer = null;
+      })
+      .addCase(fetchNearByOffersAction.fulfilled, (state, action) => {
+        state.nearByOffers = action.payload;
+      })
+      .addCase(fetchCommentsAction.fulfilled, (state, action) => {
+        state.comments = action.payload;
+      });
+  }
+}
+);

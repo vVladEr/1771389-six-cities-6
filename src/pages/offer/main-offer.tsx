@@ -1,24 +1,42 @@
-import { Navigate } from 'react-router-dom';
-import { CardOffer, Offer } from '../../models/offers';
+import { CardOffer, Offer} from '../../models/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 import { ReviewForm } from './review-form';
 import { ReviewsList } from '../../components/review/review-list';
 import OffersMap from '../../components/offers-map/offers-map';
 import { MarkedPlaceLocation } from '../../models/place-location';
-import { useSelector } from 'react-redux';
 import { getCurCity } from '../../store/offers-process/selectors';
+import { Reviews } from '../../models/review';
+import { getAuthStatus } from '../../store/user-process/selectors';
+import { AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
 
 type MainOfferProps = {
-  mainOffer: Offer | undefined;
+  mainOffer: Offer;
   offersNearBy: CardOffer[];
+  comments: Reviews;
 }
 
 
-export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Element{
-  const currentCity = useSelector(getCurCity);
-  if (!mainOffer) {
-    return <Navigate to="*"/>;
-  }
+export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) : JSX.Element{
+  const currentCity = useAppSelector(getCurCity);
+  const authStatus = useAppSelector(getAuthStatus);
+  const points = offersNearBy.map(
+    (offer) => {
+      const loc : MarkedPlaceLocation =
+              {
+                offerId : offer.id,
+                latitude : offer.location.latitude,
+                longitude : offer.location.longitude,
+                zoom : offer.location.zoom
+              };
+      return loc;
+    });
+  points.push({
+    offerId: mainOffer.id,
+    latitude: mainOffer.location.latitude,
+    longitude : mainOffer.location.longitude,
+    zoom : mainOffer.location.zoom
+  });
   return(
     <section className="offer">
       <div className="offer__gallery-container container">
@@ -112,25 +130,13 @@ export function MainOffer({mainOffer, offersNearBy}: MainOfferProps) : JSX.Eleme
             </div>
           </div>
           <section className="offer__reviews reviews">
-            <ReviewsList />
-            <ReviewForm />
+            <ReviewsList reviews={comments}/>
+            {authStatus === AuthorizationStatus.Auth && <ReviewForm offerId={mainOffer.id}/>}
           </section>
         </div>
       </div>
       <section className="offer__map map">
-        <OffersMap city={currentCity} selectedPointId={mainOffer.id} points={offersNearBy.map(
-          (offer) => {
-            const loc : MarkedPlaceLocation =
-              {
-                offerId : offer.id,
-                latitude : offer.location.latitude,
-                longitude : offer.location.longitude,
-                zoom : offer.location.zoom
-              };
-            return loc;
-          }
-        )}
-        />
+        <OffersMap city={currentCity} selectedPointId={mainOffer.id} points={points}/>
       </section>
     </section>
   );

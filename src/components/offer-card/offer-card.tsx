@@ -1,26 +1,27 @@
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import { CardOffer } from '../../models/offers';
 import { GetPersentsFromRating } from '../rating/rating';
-import { OffersCardPrefix } from '../../models/card-prefixes';
+import { AppRoute } from '../../const';
+import { CardType, getCardClassName, getImageWrapperClassName } from '../../models/card-types';
 
 type OfferCardProps = {
   offer: CardOffer;
   onMouseOver: () => void;
   onMouseLeave: () => void;
-  cardPrefix: OffersCardPrefix;
+  cardType: CardType;
 }
 
-export function OfferCard({offer, onMouseOver, onMouseLeave, cardPrefix}: OfferCardProps): JSX.Element{
+export function OfferCard({offer, onMouseOver, onMouseLeave, cardType}: OfferCardProps): JSX.Element{
   return(
-    <article className={`${cardPrefix}__card place-card`} onMouseEnter={onMouseOver} onMouseLeave={onMouseLeave}>
+    <article className={getCardClassName(cardType)} onMouseEnter={onMouseOver} onMouseLeave={onMouseLeave}>
       {
         offer.isPremium &&
             <div className="place-card__mark">
               <span>Premium</span>
             </div>
       }
-      <div className={`${cardPrefix}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`offer/${offer.id}`}>
+      <div className={getImageWrapperClassName(cardType)}>
+        <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })}>
           <img className="place-card__image" src={ offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
@@ -44,7 +45,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, cardPrefix}: OfferC
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`offer/${offer.id}`}>
+          <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })}>
             {offer.title}
           </Link>
         </h2>

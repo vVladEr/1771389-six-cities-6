@@ -3,22 +3,22 @@ import OffersMap from '../../components/offers-map/offers-map';
 import { City } from '../../models/city';
 import { useEffect, useState } from 'react';
 import { MarkedPlaceLocation } from '../../models/place-location';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { CitiesList } from './cities-list';
-
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 import { changeCity } from '../../store/offers-process/offers-process';
 import { OfferList } from '../../components/offers-list/offer-list';
-import { OffersCardPrefix } from '../../models/card-prefixes';
 import { SortType } from '../../models/sort-type';
 import { CardOffer } from '../../models/offers';
+import { CardType } from '../../models/card-types';
+import { useAppSelector } from '../../hooks';
 
 
 function MainPage() : JSX.Element {
   const dispatch = useDispatch();
-  const currentCity = useSelector(getCurCity);
-  const cities = useSelector(getAllCities);
-  const filteredOffers = useSelector(getOffersByCity);
+  const currentCity = useAppSelector(getCurCity);
+  const cities = useAppSelector(getAllCities);
+  const filteredOffers = useAppSelector(getOffersByCity);
 
   const [currentOfferId, setActiveOfferId] = useState('');
   const [currentSortType, setSortType] = useState(SortType.Popular);
@@ -90,7 +90,7 @@ function MainPage() : JSX.Element {
                     }
                   </ul>
                 </form>
-                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardPrefix={OffersCardPrefix.Cities}/>
+                <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardType={CardType.Cities}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">

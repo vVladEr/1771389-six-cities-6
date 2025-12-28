@@ -2,9 +2,11 @@ import React from 'react';
 import { ReviewComp } from './review';
 import { Reviews } from '../../models/review';
 
-export function ReviewsList(): JSX.Element{
+type ReviewListProps = {
+  reviews: Reviews;
+}
 
-  const reviews: Reviews = [];
+export function ReviewsList({reviews}: ReviewListProps): JSX.Element{
   return(
     <React.Fragment>
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>

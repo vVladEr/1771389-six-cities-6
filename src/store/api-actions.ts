@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../models/state';
 import { AxiosInstance } from 'axios';
-import { CardOffer } from '../models/offers';
+import { CardOffer, Offer } from '../models/offers';
 import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../models/auth-data';
@@ -9,6 +9,8 @@ import {UserData} from '../models/user-data';
 import { FullUserData } from '../models/full-user-data';
 import { setAuthStatus, setCurUserEmail, setCurUserImage } from './user-process/user-process';
 import { redirectToRoute } from './action';
+import { Review, Reviews } from '../models/review';
+import { ReviewFormData } from '../models/review-form-data';
 
 export const fetchOffersAction = createAsyncThunk<CardOffer[], undefined, {
   dispatch: AppDispatch;
@@ -19,6 +21,55 @@ export const fetchOffersAction = createAsyncThunk<CardOffer[], undefined, {
   async(_arg, {extra: api}) => {
     const {data} = await api.get<CardOffer[]>(APIRoute.Offers);
     return data;
+  }
+);
+
+export const fetchNearByOffersAction = createAsyncThunk<CardOffer[], string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'offersNearby/fetch',
+  async(offerId, {extra: api}) => {
+    const {data} = await api.get<CardOffer[]>(`${APIRoute.Offers }/${offerId}/nearby`);
+    return data.splice(0, 3);
+  }
+);
+
+export const fetchOfferAction = createAsyncThunk<Offer, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'offer/fetch',
+  async(offerId, {extra: api}) => {
+    const {data} = await api.get<Offer>(`${APIRoute.Offers }/${offerId}`);
+    return data;
+  }
+);
+
+export const fetchCommentsAction = createAsyncThunk<Reviews, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/fetch',
+  async(offerId, {extra: api}) => {
+    const {data} = await api.get<Reviews>(`${APIRoute.Comments }/${offerId}`);
+    return data;
+  }
+);
+
+export const sendCommentAction = createAsyncThunk<void, ReviewFormData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'comments/send',
+  async({offerId, comment, rating}, {dispatch, extra: api}) => {
+    const parsedRating : number = Number(rating);
+    await api.post<Review>(`${APIRoute.Comments }/${offerId}`, {comment, rating: parsedRating});
+    dispatch(fetchCommentsAction(offerId));
   }
 );
 

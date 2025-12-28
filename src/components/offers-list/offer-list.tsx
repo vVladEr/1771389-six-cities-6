@@ -1,25 +1,25 @@
+import { CardType, getCardListClassName } from '../../models/card-types';
 import { CardOffer } from '../../models/offers';
 import { OfferCard } from '../offer-card/offer-card';
-import { OffersCardPrefix } from '../../models/card-prefixes';
 
 
 type OffersProps = {
   offers: CardOffer[];
   setActiveOfferFunc: (offerId: string) => void;
-  cardPrefix: OffersCardPrefix;
+  cardType: CardType;
 }
 
 
-export function OfferList({offers, setActiveOfferFunc, cardPrefix} : OffersProps): JSX.Element {
+export function OfferList({offers, setActiveOfferFunc, cardType} : OffersProps): JSX.Element {
   return(
-    <div className={`${cardPrefix}__places-list places__list ${cardPrefix === OffersCardPrefix.Cities ? 'tabs__content' : ''}`}>
+    <div className={getCardListClassName(cardType)}>
       {
         offers.map((offer) => (
           <OfferCard
             offer={offer}
             onMouseOver={() => setActiveOfferFunc(offer.id)}
             onMouseLeave={() => setActiveOfferFunc('')}
-            cardPrefix={cardPrefix}
+            cardType={cardType}
             key={offer.id}
           />
         ))

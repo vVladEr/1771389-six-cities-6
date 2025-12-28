@@ -1,29 +1,52 @@
-import { useParams } from 'react-router-dom';
-import { CardOffer, Offer } from '../../models/offers';
+import { Navigate, useParams } from 'react-router-dom';
 import { MainOffer } from './main-offer';
 import { Header } from '../../components/header/header';
 import { OfferList } from '../../components/offers-list/offer-list';
-import { OffersCardPrefix } from '../../models/card-prefixes';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../../store/api-actions';
+import { getComments, getIfOfferFound, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
+import { useEffect } from 'react';
+import { LoadingScreen } from '../loading/loading';
+import { CardType } from '../../models/card-types';
 
-type OfferPageProps = {
-  fullOffers: Offer[];
-}
+function OfferPage() : JSX.Element {
 
-function OfferPage({fullOffers}: OfferPageProps) : JSX.Element {
+  const dispatch = useAppDispatch();
+  const offersNearby = useAppSelector(getOffersNearBy);
+  const mainOffer = useAppSelector(getOffer);
+  const comments = useAppSelector(getComments);
+  const isOfferLoading = useAppSelector(getIsLoadingOffer);
+  const isOfferFound = useAppSelector(getIfOfferFound);
   const {id} = useParams();
-  const offer: Offer | undefined = fullOffers.find((possibleOffer) => possibleOffer.id === id);
-  const offersNearBy: CardOffer[] = [];
+
+  useEffect(() =>{
+    if (id){
+      dispatch(fetchOfferAction(id));
+      dispatch(fetchNearByOffersAction(id));
+      dispatch(fetchCommentsAction(id));
+    }
+
+  }, [dispatch, id]);
+
+  if (isOfferLoading){
+    return <LoadingScreen />;
+  }
+
+  if (!isOfferFound){
+    return <Navigate to="/*" replace/>;
+  }
+
   return(
     <body>
       <div className="page">
         <Header/>
 
         <main className="page__main page__main--offer">
-          <MainOffer mainOffer={offer} offersNearBy={offersNearBy}/>
+          <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer!} comments={comments}/>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList offers={offersNearBy} setActiveOfferFunc={() => {}} cardPrefix={OffersCardPrefix.NearPlaces}/>
+              <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}/>
             </section>
           </div>
         </main>
