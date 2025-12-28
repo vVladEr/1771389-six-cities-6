@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { City, Cities } from '../../models/city';
+import { City, Cities } from '../../types/city';
 
 type citiesListProps = {
   currentCity: City;

@@ -51,3 +51,19 @@ export function getImageWrapperClassName(cardType : CardType) : string{
       return '';
   }
 }
+
+  export function getImageSizes(cardType : CardType) : {width: number, height: number}{
+    switch (cardType) {
+      case CardType.Cities :
+        return {width: 260, height: 200};
+
+      case CardType.NearPlaces :
+        return {width: 260, height: 200};
+
+      case CardType.Favorites :
+        return {width: 150, height: 110};
+
+      default:
+        return {width: 0, height: 0};
+    }
+  }

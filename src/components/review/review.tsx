@@ -1,4 +1,4 @@
-import { Review } from '../../models/review';
+import { Review } from '../../types/review';
 import { GetPersentsFromRating } from '../rating/rating';
 
 

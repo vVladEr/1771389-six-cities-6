@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../models/offers';
+import { Offer } from '../../types/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 
 

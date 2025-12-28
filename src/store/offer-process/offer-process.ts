@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { OfferState } from '../../models/state';
+import { OfferState } from '../../types/state';
 import { NameSpaces } from '../../const';
 import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../api-actions';
 

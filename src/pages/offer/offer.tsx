@@ -7,7 +7,7 @@ import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '
 import { getComments, getIfOfferFound, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
 import { useEffect } from 'react';
 import { LoadingScreen } from '../loading/loading';
-import { CardType } from '../../models/card-types';
+import { CardType } from '../../types/card-types';
 import { switchFavoriteStatusInNearByOffer } from '../../store/offer-process/offer-process';
 import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 

@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpaces } from '../../const';
-import {City, DefaultCities, Paris } from '../../models/city';
+import {City, DefaultCities, Paris } from '../../types/city';
 import { fetchOffersAction } from '../api-actions';
-import { OffersState } from '../../models/state';
+import { OffersState } from '../../types/state';
 
 
 const initialState: OffersState = {

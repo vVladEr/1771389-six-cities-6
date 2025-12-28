@@ -1,11 +1,11 @@
-import { CardOffer, Offer} from '../../models/offers';
+import { CardOffer, Offer} from '../../types/offers';
 import { GetPersentsFromRating} from '../../components/rating/rating';
 import { ReviewForm } from './review-form';
 import { ReviewsList } from '../../components/review/review-list';
 import OffersMap from '../../components/offers-map/offers-map';
-import { MarkedPlaceLocation } from '../../models/place-location';
+import { MarkedPlaceLocation } from '../../types/place-location';
 import { getCurCity } from '../../store/offers-process/selectors';
-import { Reviews } from '../../models/review';
+import { Reviews } from '../../types/review';
 import { getAuthStatus } from '../../store/user-process/selectors';
 import { AuthorizationStatus, NumberOfImages } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';

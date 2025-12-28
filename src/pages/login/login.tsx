@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
-import { AuthData } from '../../models/auth-data';
+import { AuthData } from '../../types/auth-data';
 import { useAppDispatch } from '../../hooks';
 
 function LoginPage() : JSX.Element {

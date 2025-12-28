@@ -1,5 +1,5 @@
-import { CardType, getCardListClassName } from '../../models/card-types';
-import { CardOffer } from '../../models/offers';
+import { CardType, getCardListClassName } from '../../types/card-types';
+import { CardOffer } from '../../types/offers';
 import { OfferCard } from '../offer-card/offer-card';
 
 

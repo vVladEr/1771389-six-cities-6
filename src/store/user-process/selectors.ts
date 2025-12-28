@@ -1,5 +1,5 @@
 import { AuthorizationStatus, NameSpaces } from '../../const';
-import { State } from '../../models/state';
+import { State } from '../../types/state';
 
 export const getAuthStatus = (state:State) : AuthorizationStatus => state[NameSpaces.User].authorizationStatus;
 export const getCurUserEmail = (state:State): string => state[NameSpaces.User].curUserName;

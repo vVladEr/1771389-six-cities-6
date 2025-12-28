@@ -1,4 +1,4 @@
-import { City } from "../../models/city"
+import { City } from "../../types/city"
 
 type MainOffersContainerEmptyProps = {
   currentCity: City

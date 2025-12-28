@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { NameSpaces } from "../../const";
-import { FavoritesState } from "../../models/state";
+import { FavoritesState } from "../../types/state";
 import { fetchFavoritesAction } from "../api-actions";
 
 const initialState: FavoritesState = {

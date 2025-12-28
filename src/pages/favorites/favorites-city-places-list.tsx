@@ -1,7 +1,7 @@
 import { OfferList } from '../../components/offers-list/offer-list';
 import { useAppDispatch } from '../../hooks';
-import { CardType } from '../../models/card-types';
-import { CardOffer } from '../../models/offers';
+import { CardType } from '../../types/card-types';
+import { CardOffer } from '../../types/offers';
 import { switchFavoriteStatusInFavoriteOffer } from '../../store/favorites-process/favorites-process';
 import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 

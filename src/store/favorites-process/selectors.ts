@@ -1,4 +1,4 @@
-import { State } from "../../models/state";
+import { State } from "../../types/state";
 
 
 export const getFavoriteOffers= (state: State) => state.FAVORITES.favoriteOffers;

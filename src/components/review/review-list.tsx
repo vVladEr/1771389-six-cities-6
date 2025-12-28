@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ReviewComp } from './review';
-import { Reviews } from '../../models/review';
+import { Reviews } from '../../types/review';
 import { NumberOfReviews } from '../../const';
 
 type ReviewListProps = {

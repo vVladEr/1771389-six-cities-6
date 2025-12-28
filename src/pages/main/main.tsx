@@ -1,5 +1,5 @@
 import { Header } from '../../components/header/header';
-import { City } from '../../models/city';
+import { City } from '../../types/city';
 import { CitiesList } from './cities-list';
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 import { changeCity } from '../../store/offers-process/offers-process';

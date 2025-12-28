@@ -1,4 +1,4 @@
-import { State } from '../../models/state';
+import { State } from '../../types/state';
 
 export const getOffer = (state: State) => state.OFFER.offer;
 export const getOffersNearBy = (state: State) => state.OFFER.nearByOffers;

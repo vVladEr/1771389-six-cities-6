@@ -1,8 +1,8 @@
 import { generatePath, Link } from 'react-router-dom';
-import { CardOffer } from '../../models/offers';
+import { CardOffer } from '../../types/offers';
 import { GetPersentsFromRating } from '../rating/rating';
 import { AppRoute } from '../../const';
-import { CardType, getCardClassName, getImageWrapperClassName } from '../../models/card-types';
+import { CardType, getCardClassName, getImageSizes, getImageWrapperClassName } from '../../types/card-types';
 import { Bookmark } from '../bookmark/bookmark';
 import { BookmarkType } from '../bookmark/bookmark-prefix';
 
@@ -15,6 +15,7 @@ type OfferCardProps = {
 }
 
 export function OfferCard({offer, onMouseOver, onMouseLeave, onBookmarkClick, cardType}: OfferCardProps): JSX.Element{
+  const {width, height} = getImageSizes(cardType);
   return(
     <article className={getCardClassName(cardType)} onMouseEnter={onMouseOver} onMouseLeave={onMouseLeave}>
       {
@@ -25,7 +26,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, onBookmarkClick, ca
       }
       <div className={getImageWrapperClassName(cardType)}>
         <Link to={generatePath(AppRoute.Offer, { id: String(offer.id) })}>
-          <img className="place-card__image" src={ offer.previewImage} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={ offer.previewImage} width={width} height={height} alt="Place image"/>
         </Link>
       </div>
       <div className="place-card__info">
