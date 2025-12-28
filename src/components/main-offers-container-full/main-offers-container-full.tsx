@@ -53,7 +53,7 @@ export function MainOffersContainerFull({currentCity, filteredOffers}: FullOffer
         <form className="places__sorting" action="#" method="get"
           onClick={ () => setIsSortOpen(!isSortOpen)}
         >
-          <span className="places__sorting-caption">Sort by</span>
+          <span className="places__sorting-caption">Sort by </span>
           <span className="places__sorting-type" tabIndex={0}>
             {currentSortType}
             <svg className="places__sorting-arrow" width="7" height="4">

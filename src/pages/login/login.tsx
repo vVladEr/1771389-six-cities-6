@@ -1,14 +1,17 @@
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { Link, Navigate } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { FormEvent, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getAuthStatus } from '../../store/user-process/selectors';
 
 function LoginPage() : JSX.Element {
   const dispatch = useAppDispatch();
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+
+  const authStatus = useAppSelector(getAuthStatus);
 
   const handleSubmit = (evt: FormEvent) => {
     evt.preventDefault();
@@ -21,6 +24,10 @@ function LoginPage() : JSX.Element {
       dispatch(loginAction(data));
     }
   };
+
+  if (authStatus === AuthorizationStatus.Auth){
+    return <Navigate to={AppRoute.Root} replace/>;
+  }
 
   return(
     <body>
