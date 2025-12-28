@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 import { getAuthStatus, getCurUserEmail, getCurUserImage } from '../../store/user-process/selectors';
 
 export function Header() : JSX.Element{
   const dispatch = useAppDispatch();
 
-  const authorizationStatus = useSelector(getAuthStatus);
-  const curUserName = useSelector(getCurUserEmail);
-  const curUserAvatarPatch = useSelector(getCurUserImage);
+  const authorizationStatus = useAppSelector(getAuthStatus);
+  const curUserName = useAppSelector(getCurUserEmail);
+  const curUserAvatarPatch = useAppSelector(getCurUserImage);
 
   const handleLogOut = () => {
     dispatch(logoutAction());

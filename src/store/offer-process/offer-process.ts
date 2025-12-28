@@ -7,7 +7,8 @@ const initialState : OfferState = {
   offer: null,
   nearByOffers: [],
   comments: [],
-  isLoadingOffer: false
+  isLoadingOffer: true,
+  isOfferFound: false
 };
 
 export const offerProcess = createSlice({
@@ -17,12 +18,16 @@ export const offerProcess = createSlice({
   extraReducers(builder){
     builder.addCase(fetchOfferAction.pending, (state) => {
       state.isLoadingOffer = true;
+      state.isOfferFound = false;
+      state.offer = null;
     })
       .addCase(fetchOfferAction.fulfilled, (state, action) => {
         state.offer = action.payload;
+        state.isOfferFound = true;
         state.isLoadingOffer = false;
       })
       .addCase(fetchOfferAction.rejected, (state) => {
+        state.isOfferFound = false;
         state.isLoadingOffer = false;
         state.offer = null;
       })

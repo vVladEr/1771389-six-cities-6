@@ -2,10 +2,9 @@ import { Navigate, useParams } from 'react-router-dom';
 import { MainOffer } from './main-offer';
 import { Header } from '../../components/header/header';
 import { OfferList } from '../../components/offers-list/offer-list';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../../store/api-actions';
-import { useSelector } from 'react-redux';
-import { getComments, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
+import { getComments, getIfOfferFound, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
 import { useEffect } from 'react';
 import { LoadingScreen } from '../loading/loading';
 import { CardType } from '../../models/card-types';
@@ -13,10 +12,11 @@ import { CardType } from '../../models/card-types';
 function OfferPage() : JSX.Element {
 
   const dispatch = useAppDispatch();
-  const offersNearby = useSelector(getOffersNearBy);
-  const mainOffer = useSelector(getOffer);
-  const comments = useSelector(getComments);
-  const isOfferLoading = useSelector(getIsLoadingOffer);
+  const offersNearby = useAppSelector(getOffersNearBy);
+  const mainOffer = useAppSelector(getOffer);
+  const comments = useAppSelector(getComments);
+  const isOfferLoading = useAppSelector(getIsLoadingOffer);
+  const isOfferFound = useAppSelector(getIfOfferFound);
   const {id} = useParams();
 
   useEffect(() =>{
@@ -32,7 +32,7 @@ function OfferPage() : JSX.Element {
     return <LoadingScreen />;
   }
 
-  if (!mainOffer){
+  if (!isOfferFound){
     return <Navigate to="/*" replace/>;
   }
 
@@ -42,7 +42,7 @@ function OfferPage() : JSX.Element {
         <Header/>
 
         <main className="page__main page__main--offer">
-          <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer} comments={comments}/>
+          <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer!} comments={comments}/>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>

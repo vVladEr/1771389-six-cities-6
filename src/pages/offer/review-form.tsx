@@ -1,10 +1,9 @@
 import React, { FormEvent } from 'react';
 import { StarsData } from '../../components/rating/rating-stars';
 import { RatingStar } from '../../components/rating/rating-star';
-import { useSelector } from 'react-redux';
 import { getAuthStatus } from '../../store/user-process/selectors';
 import { AuthorizationStatus } from '../../const';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { sendCommentAction } from '../../store/api-actions';
 
 type ReviewFormProps ={
@@ -12,7 +11,7 @@ type ReviewFormProps ={
 }
 
 export function ReviewForm({offerId}: ReviewFormProps) : JSX.Element{
-  const authStatus = useSelector(getAuthStatus);
+  const authStatus = useAppSelector(getAuthStatus);
   const dispatch = useAppDispatch();
   const [reviewFormData, setReviewFormData] = React.useState(
     {

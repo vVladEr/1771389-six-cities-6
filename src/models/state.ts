@@ -16,6 +16,7 @@ export type OfferState = {
   nearByOffers: CardOffer[];
   comments: Reviews;
   isLoadingOffer: boolean;
+  isOfferFound: boolean;
 }
 
 export type UserProcess = {
