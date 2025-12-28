@@ -7,7 +7,7 @@ import { MarkedPlaceLocation } from '../../models/place-location';
 import { getCurCity } from '../../store/offers-process/selectors';
 import { Reviews } from '../../models/review';
 import { getAuthStatus } from '../../store/user-process/selectors';
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus, NumberOfImages } from '../../const';
 import { useAppSelector } from '../../hooks';
 
 type MainOfferProps = {
@@ -37,12 +37,13 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
     longitude : mainOffer.location.longitude,
     zoom : mainOffer.location.zoom
   });
+  const tmpImages = mainOffer.images.slice(0, NumberOfImages);
   return(
     <section className="offer">
       <div className="offer__gallery-container container">
         <div className="offer__gallery">
-          {mainOffer.images.map((imageSrc) => (
-            <div className="offer__image-wrapper" key="offer-image">
+          {tmpImages.map((imageSrc, index) => (
+            <div className="offer__image-wrapper" key={`offer-image-${index}`}>
               <img className="offer__image" src={imageSrc} alt="Photo studio" />
             </div>
           )
@@ -98,9 +99,9 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
             <h2 className="offer__inside-title">What&apos;s inside</h2>
             <ul className="offer__inside-list">
               {
-                mainOffer.goods.map((good) =>
+                mainOffer.goods.map((good, index) =>
                   (
-                    <li className="offer__inside-item" key="good">
+                    <li className="offer__inside-item" key={`good-${index}`}>
                       {good}
                     </li>
                   ))

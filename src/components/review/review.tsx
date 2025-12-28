@@ -38,7 +38,7 @@ export function ReviewComp({review}: ReviewProps): JSX.Element{
           {parsedReview.comment}
         </p>
         <time className="reviews__time" dateTime={parsedReview.date.toDateString()}>
-          {`${monthNames[parsedReview.date.getMonth()]} ${parsedReview.date.getFullYear()}`}April 2019
+          {`${monthNames[parsedReview.date.getMonth()]} ${parsedReview.date.getFullYear()}`}
         </time>
       </div>
     </li>

@@ -32,3 +32,6 @@ export enum NameSpaces {
   Offer = 'OFFER',
   Comments = 'COMMENTS'
 }
+
+export const NumberOfReviews : number = 10;
+export const NumberOfImages : number = 6;
