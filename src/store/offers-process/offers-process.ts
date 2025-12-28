@@ -24,10 +24,14 @@ export const offersProcess = createSlice({
     builder.addCase(fetchOffersAction.pending, (state) => {
       state.isLoadingOffers = true;
     })
-      .addCase(fetchOffersAction.fulfilled, (state, action) => {
-        state.isLoadingOffers = false;
-        state.places = action.payload;
-      });
+    .addCase(fetchOffersAction.fulfilled, (state, action) => {
+      state.isLoadingOffers = false;
+      state.places = action.payload;
+    })
+    .addCase(fetchOffersAction.rejected, (state) => {
+      state.isLoadingOffers = false;
+      state.places = [];
+    });
   }
 }
 );
