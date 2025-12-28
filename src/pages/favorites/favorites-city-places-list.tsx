@@ -1,10 +1,10 @@
 import { OfferList } from '../../components/offers-list/offer-list';
 import { CardType } from '../../models/card-types';
-import { Offer } from '../../models/offers';
+import { CardOffer } from '../../models/offers';
 
 type FavoritesCityPlacesListProps = {
   cityName: string;
-  favoritesCityPlaces : Offer[];
+  favoritesCityPlaces : CardOffer[];
 }
 
 

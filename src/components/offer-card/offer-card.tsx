@@ -3,6 +3,7 @@ import { CardOffer } from '../../models/offers';
 import { GetPersentsFromRating } from '../rating/rating';
 import { AppRoute } from '../../const';
 import { CardType, getCardClassName, getImageWrapperClassName } from '../../models/card-types';
+import { Bookmark } from '../bookmark/bookmark';
 
 type OfferCardProps = {
   offer: CardOffer;
@@ -31,12 +32,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, cardType}: OfferCar
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <Bookmark offerId={offer.id} isActive={offer.isFavorite}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

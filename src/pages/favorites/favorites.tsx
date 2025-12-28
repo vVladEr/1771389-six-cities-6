@@ -1,20 +1,28 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { Offer } from '../../models/offers';
+import { CardOffer } from '../../models/offers';
 import { FavoritesCityPlacesList } from './favorites-city-places-list';
 import { Header } from '../../components/header/header';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useEffect } from 'react';
+import { fetchFavoritesAction } from '../../store/api-actions';
+import { getFavoriteOffers } from '../../store/favorites-process/selectors';
 
-type FavoritesPageProps = {
-  favoriteOffers : Offer[];
-}
 
-function GetUniqueCityNames(offers: Offer[]): string[] {
+function GetUniqueCityNames(offers: CardOffer[]): string[] {
   const names = offers.map((offer) => offer.city.name);
   return names.filter((el, ind) => ind === names.indexOf(el)).sort();
 }
 
 
-function FavoritesPage({favoriteOffers} : FavoritesPageProps) : JSX.Element {
+function FavoritesPage() : JSX.Element {
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector(getFavoriteOffers);
+
+  useEffect(() => {
+    dispatch(fetchFavoritesAction());
+  }, [dispatch])
+
   return(
     <body>
       <div className="page">
@@ -26,9 +34,9 @@ function FavoritesPage({favoriteOffers} : FavoritesPageProps) : JSX.Element {
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
                 {
-                  GetUniqueCityNames(favoriteOffers).map((cityName) =>
+                  GetUniqueCityNames(favorites).map((cityName) =>
                     (
-                      <FavoritesCityPlacesList cityName={cityName} favoritesCityPlaces={favoriteOffers.filter((offer) =>
+                      <FavoritesCityPlacesList cityName={cityName} favoritesCityPlaces={favorites.filter((offer) =>
                         offer.city.name === cityName)}
                       key={`${cityName}`}
                       />
