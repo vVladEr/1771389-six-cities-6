@@ -2,7 +2,8 @@ export enum AppRoute {
   Login = '/login',
   Root = '/',
   Favorites = '/favorites',
-  Offer = '/offer/:id'
+  Offer = '/offer/:id',
+  NotFound = '/*'
 }
 
 export enum AuthorizationStatus {
@@ -34,5 +35,5 @@ export enum NameSpaces {
   Favorites = 'FAVORITES',
 }
 
-export const NumberOfReviews : number = 10;
-export const NumberOfImages : number = 6;
+export const NUMBER_OF_REVIEWS : number = 10;
+export const NUMBER_OF_IMAGES : number = 6;

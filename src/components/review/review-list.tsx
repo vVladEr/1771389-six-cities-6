@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ReviewComp } from './review';
 import { Reviews } from '../../types/review';
-import { NumberOfReviews } from '../../const';
+import { NUMBER_OF_REVIEWS } from '../../const';
 
 type ReviewListProps = {
   reviews: Reviews;
@@ -15,7 +15,7 @@ export function ReviewsList({reviews}: ReviewListProps): JSX.Element{
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
       return dateB.getMilliseconds() - dateA.getMilliseconds();
-    }).slice(0, NumberOfReviews);
+    }).slice(0, NUMBER_OF_REVIEWS);
     setCorrectReviews(tmpReviews);
   }, [reviews]);
 

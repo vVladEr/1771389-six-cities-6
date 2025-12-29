@@ -10,6 +10,7 @@ import { LoadingScreen } from '../loading/loading';
 import { CardType } from '../../types/card-types';
 import { switchFavoriteStatusInNearByOffer } from '../../store/offer-process/offer-process';
 import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
+import { AppRoute } from '../../const';
 
 function OfferPage() : JSX.Element {
 
@@ -36,7 +37,7 @@ function OfferPage() : JSX.Element {
   }
 
   if (!isOfferFound){
-    return <Navigate to="/*" replace/>;
+    return <Navigate to={AppRoute.NotFound} replace/>;
   }
 
   const onBookmarkClick = (nearByOfferId: string) => {

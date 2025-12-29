@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { CardType } from '../../types/card-types';
-import { CardOffer } from '../../types/offers';
-import { MarkedPlaceLocation } from '../../types/place-location';
-import { SortType } from '../../types/sort-type';
-import { OfferList } from '../offers-list/offer-list';
-import OffersMap from '../offers-map/offers-map';
-import { City } from '../../types/city';
-import { useAppDispatch } from '../../hooks';
-import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
+import { CardType } from '../../../types/card-types';
+import { CardOffer } from '../../../types/offers';
+import { MarkedPlaceLocation } from '../../../types/place-location';
+import { SortType } from '../../../types/sort-type';
+import { OfferList } from '../../offers-list/offer-list';
+import OffersMap from '../../offers-map/offers-map';
+import { City } from '../../../types/city';
+import { useAppDispatch } from '../../../hooks';
+import { switchFavoriteStatusInOffers } from '../../../store/offers-process/offers-process';
 type FullOffersContainerProps = {
   currentCity: City;
   filteredOffers: CardOffer[];

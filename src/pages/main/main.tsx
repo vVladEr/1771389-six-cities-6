@@ -4,8 +4,8 @@ import { CitiesList } from './cities-list';
 import { getAllCities, getCurCity, getOffersByCity } from '../../store/offers-process/selectors';
 import { changeCity } from '../../store/offers-process/offers-process';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { MainOffersContainerEmpty } from '../../components/main-offers-container-empty/main-offers-container-empty';
-import { MainOffersContainerFull } from '../../components/main-offers-container-full/main-offers-container-full';
+import { MainOffersContainerEmpty } from '../../components/main-offer-containers/main-offers-container-empty/main-offers-container-empty';
+import { MainOffersContainerFull } from '../../components/main-offer-containers/main-offers-container-full/main-offers-container-full';
 
 
 function MainPage() : JSX.Element {

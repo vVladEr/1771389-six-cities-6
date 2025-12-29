@@ -7,7 +7,7 @@ import { MarkedPlaceLocation } from '../../types/place-location';
 import { getCurCity } from '../../store/offers-process/selectors';
 import { Reviews } from '../../types/review';
 import { getAuthStatus } from '../../store/user-process/selectors';
-import { AuthorizationStatus, NumberOfImages } from '../../const';
+import { AuthorizationStatus, NUMBER_OF_IMAGES } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Bookmark } from '../../components/bookmark/bookmark';
 import { BookmarkType } from '../../components/bookmark/bookmark-prefix';
@@ -48,7 +48,7 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
     longitude : mainOffer.location.longitude,
     zoom : mainOffer.location.zoom
   });
-  const tmpImages = mainOffer.images.slice(0, NumberOfImages);
+  const tmpImages = mainOffer.images.slice(0, NUMBER_OF_IMAGES);
   return(
     <section className="offer">
       <div className="offer__gallery-container container">

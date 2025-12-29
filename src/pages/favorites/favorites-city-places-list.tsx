@@ -21,7 +21,6 @@ export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): J
 
 
   return(
-
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
