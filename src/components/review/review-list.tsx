@@ -14,7 +14,7 @@ export function ReviewsList({reviews}: ReviewListProps): JSX.Element{
     const tmpReviews = reviews.slice().sort((a, b) =>{
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
-      return dateB.getMilliseconds() - dateA.getMilliseconds();
+      return dateB.getTime() - dateA.getTime();
     }).slice(0, NUMBER_OF_REVIEWS);
     setCorrectReviews(tmpReviews);
   }, [reviews]);
