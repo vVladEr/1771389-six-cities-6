@@ -69,7 +69,7 @@ export function ReviewForm({offerId}: ReviewFormProps) : JSX.Element{
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={reviewFormData.rating === 0
           || reviewFormData.review.length < 50 || reviewFormData.review.length > 300 ||
-          authStatus !== AuthorizationStatus.Auth}
+          authStatus !== AuthorizationStatus.Auth || isSendingComment}
         >Submit
         </button>
       </div>
