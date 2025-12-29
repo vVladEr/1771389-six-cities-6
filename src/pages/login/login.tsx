@@ -11,7 +11,7 @@ import { changeCity } from '../../store/offers-process/offers-process';
 function LoginPage() : JSX.Element {
   const dispatch = useAppDispatch();
   const allCities = useAppSelector(getAllCities);
-  const curCity = useAppSelector(getCurCity)
+  const curCity = useAppSelector(getCurCity);
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
@@ -30,10 +30,10 @@ function LoginPage() : JSX.Element {
   };
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * allCities.length)
-    const randomCity = allCities[randomIndex]
-    dispatch(changeCity(randomCity))
-  }, [dispatch, allCities])
+    const randomIndex = Math.floor(Math.random() * allCities.length);
+    const randomCity = allCities[randomIndex];
+    dispatch(changeCity(randomCity));
+  }, [dispatch, allCities]);
 
   if (authStatus === AuthorizationStatus.Auth){
     return <Navigate to={AppRoute.Root} replace/>;
