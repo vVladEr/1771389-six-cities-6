@@ -1,13 +1,17 @@
 import { Link, Navigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useEffect, useRef } from 'react';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getAuthStatus } from '../../store/user-process/selectors';
+import { getAllCities, getCurCity } from '../../store/offers-process/selectors';
+import { changeCity } from '../../store/offers-process/offers-process';
 
 function LoginPage() : JSX.Element {
   const dispatch = useAppDispatch();
+  const allCities = useAppSelector(getAllCities);
+  const curCity = useAppSelector(getCurCity)
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
@@ -24,6 +28,12 @@ function LoginPage() : JSX.Element {
       dispatch(loginAction(data));
     }
   };
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * allCities.length)
+    const randomCity = allCities[randomIndex]
+    dispatch(changeCity(randomCity))
+  }, [dispatch, allCities])
 
   if (authStatus === AuthorizationStatus.Auth){
     return <Navigate to={AppRoute.Root} replace/>;
@@ -66,9 +76,9 @@ function LoginPage() : JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href={AppRoute.Root}>
-                <span>Amsterdam</span>
-              </a>
+              <Link className="locations__item-link" to={AppRoute.Root}>
+                <span>{curCity.name}</span>
+              </Link>
             </div>
           </section>
         </div>
