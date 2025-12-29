@@ -4,13 +4,14 @@ import { Header } from '../../components/header/header';
 import { OfferList } from '../../components/offers-list/offer-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../../store/api-actions';
-import { getComments, getIfOfferFound, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
+import { getIfOfferFound, getIsLoadingOffer, getOffer, getOffersNearBy } from '../../store/offer-process/selectors';
 import { useEffect } from 'react';
 import { LoadingScreen } from '../loading/loading';
 import { CardType } from '../../types/card-types';
 import { switchFavoriteStatusInNearByOffer } from '../../store/offer-process/offer-process';
 import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 import { AppRoute } from '../../const';
+import { getComments } from '../../store/comments-process/selectors';
 
 function OfferPage() : JSX.Element {
 

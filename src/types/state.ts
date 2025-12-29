@@ -19,9 +19,14 @@ export type FavoritesState = {
 export type OfferState = {
   offer?: Offer | null;
   nearByOffers: CardOffer[];
-  comments: Reviews;
   isLoadingOffer: boolean;
   isOfferFound: boolean;
+}
+
+export type CommentsState = {
+  comments: Reviews;
+  isSendingComment: boolean;
+  isSendingSuccess?: boolean;
 }
 
 export type UserProcess = {

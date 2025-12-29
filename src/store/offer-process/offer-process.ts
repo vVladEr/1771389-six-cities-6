@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { OfferState } from '../../types/state';
 import { NameSpaces } from '../../const';
-import { fetchCommentsAction, fetchNearByOffersAction, fetchOfferAction } from '../api-actions';
+import { fetchNearByOffersAction, fetchOfferAction } from '../api-actions';
 
 const initialState : OfferState = {
   offer: null,
   nearByOffers: [],
-  comments: [],
   isLoadingOffer: true,
   isOfferFound: false
 };
@@ -47,9 +46,6 @@ export const offerProcess = createSlice({
       })
       .addCase(fetchNearByOffersAction.fulfilled, (state, action) => {
         state.nearByOffers = action.payload;
-      })
-      .addCase(fetchCommentsAction.fulfilled, (state, action) => {
-        state.comments = action.payload;
       });
   }
 }
