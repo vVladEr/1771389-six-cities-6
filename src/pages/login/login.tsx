@@ -17,7 +17,7 @@ function LoginPage() : JSX.Element {
 
   const authStatus = useAppSelector(getAuthStatus);
 
-  const handleSubmit = (evt: FormEvent) => {
+  const handleLoginFormSubmit = (evt: FormEvent) => {
     evt.preventDefault();
 
     if (loginRef.current !== null && passwordRef.current !== null) {
@@ -57,7 +57,7 @@ function LoginPage() : JSX.Element {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" method="post" onSubmit={handleSubmit}>
+            <form className="login__form form" method="post" onSubmit={handleLoginFormSubmit}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input className="login__input form__input" type="email" name="email" placeholder="Email" required

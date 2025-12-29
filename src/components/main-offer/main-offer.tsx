@@ -25,7 +25,7 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
   const currentCity = useAppSelector(getCurCity);
   const authStatus = useAppSelector(getAuthStatus);
 
-  const handleMainOfferBookMarkClick = () =>{
+  const handleMainOfferBookmarkClick = () =>{
     dispatch(switchFavoriteStatusInMainOffer());
     dispatch(switchFavoriteStatusInOffers(mainOffer.id));
   };
@@ -75,7 +75,7 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
             </h1>
             <Bookmark offerId={mainOffer.id} isActive={mainOffer.isFavorite}
               width={31} height={33} bookmarkType={BookmarkPrefix.Offer}
-              onBookmarkClick={handleMainOfferBookMarkClick}
+              onBookmarkClick={handleMainOfferBookmarkClick}
             />
           </div>
           <div className="offer__rating rating">

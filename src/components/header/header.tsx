@@ -18,7 +18,7 @@ export function Header() : JSX.Element{
     dispatch(fetchFavoritesAction());
   }, [dispatch]);
 
-  const handleLogOut = () => {
+  const handleLogOutClick = () => {
     dispatch(logoutAction());
   };
 
@@ -46,7 +46,7 @@ export function Header() : JSX.Element{
                       </Link>
                     </li>
                     <li className="header__nav-item">
-                      <Link className="header__nav-link" to={AppRoute.Login} onClick={handleLogOut}>
+                      <Link className="header__nav-link" to={AppRoute.Login} onClick={handleLogOutClick}>
                         <span className="header__signout">Sign out</span>
                       </Link>
                     </li>

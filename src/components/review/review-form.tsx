@@ -37,7 +37,7 @@ export function ReviewForm({offerId}: ReviewFormProps) : JSX.Element{
     setReviewFormData({...reviewFormData, [name]: value});
   };
 
-  const handleSubmitingComment = (evt: FormEvent) => {
+  const handleCommentFormSubmit = (evt: FormEvent) => {
     evt.preventDefault();
     dispatch(sendCommentAction({
       offerId: offerId,
@@ -46,7 +46,7 @@ export function ReviewForm({offerId}: ReviewFormProps) : JSX.Element{
   };
 
   return(
-    <form className="reviews__form form" method="post" onSubmit={handleSubmitingComment}>
+    <form className="reviews__form form" method="post" onSubmit={handleCommentFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {
