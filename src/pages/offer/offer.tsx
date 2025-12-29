@@ -46,23 +46,21 @@ function OfferPage() : JSX.Element {
   };
 
   return(
-    <body>
-      <div className="page">
-        <Header/>
+    <div className="page">
+      <Header/>
 
-        <main className="page__main page__main--offer">
-          <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer!} comments={comments}/>
-          <div className="container">
-            <section className="near-places places">
-              <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}
-                onBookmarkClick={onBookmarkClick}
-              />
-            </section>
-          </div>
-        </main>
-      </div>
-    </body>
+      <main className="page__main page__main--offer">
+        <MainOffer offersNearBy={offersNearby} mainOffer={mainOffer!} comments={comments}/>
+        <div className="container">
+          <section className="near-places places">
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
+            <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}
+              onBookmarkClick={onBookmarkClick}
+            />
+          </section>
+        </div>
+      </main>
+    </div>
   );
 }
 
