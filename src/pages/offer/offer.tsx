@@ -1,5 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { MainOffer } from './main-offer';
+import { MainOffer } from '../../components/main-offer/main-offer';
 import { Header } from '../../components/header/header';
 import { OfferList } from '../../components/offers-list/offer-list';
 import { useAppDispatch, useAppSelector } from '../../hooks';

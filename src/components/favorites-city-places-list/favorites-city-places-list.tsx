@@ -1,4 +1,4 @@
-import { OfferList } from '../../components/offers-list/offer-list';
+import { OfferList } from '../offers-list/offer-list';
 import { useAppDispatch } from '../../hooks';
 import { CardType } from '../../types/card-types';
 import { CardOffer } from '../../types/offers';
@@ -12,8 +12,8 @@ type FavoritesCityPlacesListProps = {
 
 
 export function FavoritesCityPlacesList(props : FavoritesCityPlacesListProps): JSX.Element {
-
   const dispatch = useAppDispatch();
+
   const onBookmarkClick = (offerId: string) => {
     dispatch(switchFavoriteStatusInFavoriteOffer(offerId));
     dispatch(switchFavoriteStatusInOffers(offerId));

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { CardOffer } from '../../types/offers';
-import { FavoritesCityPlacesList } from './favorites-city-places-list';
+import { FavoritesCityPlacesList } from '../../components/favorites-city-places-list/favorites-city-places-list';
 import { Header } from '../../components/header/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useEffect } from 'react';

@@ -1,18 +1,18 @@
 import { CardOffer, Offer} from '../../types/offers';
-import { GetPersentsFromRating} from '../../components/rating/rating';
-import { ReviewForm } from './review-form';
-import { ReviewsList } from '../../components/review/review-list';
-import OffersMap from '../../components/offers-map/offers-map';
+import { GetPersentsFromRating} from '../rating/rating';
+import { ReviewsList } from '../review/review-list';
+import OffersMap from '../offers-map/offers-map';
 import { MarkedPlaceLocation } from '../../types/place-location';
 import { getCurCity } from '../../store/offers-process/selectors';
 import { Reviews } from '../../types/review';
 import { getAuthStatus } from '../../store/user-process/selectors';
 import { AuthorizationStatus, NUMBER_OF_IMAGES } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { Bookmark } from '../../components/bookmark/bookmark';
-import { BookmarkType } from '../../components/bookmark/bookmark-prefix';
+import { Bookmark } from '../bookmark/bookmark';
+import { BookmarkType } from '../bookmark/bookmark-prefix';
 import { switchFavoriteStatusInMainOffer } from '../../store/offer-process/offer-process';
 import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
+import { ReviewForm } from '../review/review-form';
 
 type MainOfferProps = {
   mainOffer: Offer;
