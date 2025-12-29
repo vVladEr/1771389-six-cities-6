@@ -1,16 +1,15 @@
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute, AuthorizationStatus, BookmarkPrefix } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getAuthStatus } from '../../store/user-process/selectors';
 import { redirectToRoute } from '../../store/action';
 import { updateFavoriteAction } from '../../store/api-actions';
-import { BookmarkType } from './bookmark-prefix';
 
 type BookmarkProps = {
   isActive: boolean;
   offerId: string;
   width: number;
   height: number;
-  bookmarkType: BookmarkType;
+  bookmarkType: BookmarkPrefix;
   onBookmarkClick: (offerId: string) => void;
 }
 
@@ -18,7 +17,7 @@ export function Bookmark({isActive, offerId, width, height, bookmarkType, onBook
   const dispatch = useAppDispatch();
   const authStatus = useAppSelector(getAuthStatus);
 
-  const handleClick = () => {
+  const handleBookmarkClick = () => {
     if (authStatus !== AuthorizationStatus.Auth){
       dispatch(redirectToRoute(AppRoute.Login));
       return;
@@ -30,7 +29,7 @@ export function Bookmark({isActive, offerId, width, height, bookmarkType, onBook
   return(
     <button className={`${bookmarkType}__bookmark-button ${isActive ? `${bookmarkType}__bookmark-button--active` : ''} button`}
       type="button"
-      onClick={handleClick}
+      onClick={handleBookmarkClick}
     >
       <svg className={`${bookmarkType}__bookmark-icon`} width={width} height={height}>
         <use xlinkHref="#icon-bookmark"></use>

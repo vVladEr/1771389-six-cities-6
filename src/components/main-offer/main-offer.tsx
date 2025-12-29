@@ -6,10 +6,9 @@ import { MarkedPlaceLocation } from '../../types/place-location';
 import { getCurCity } from '../../store/offers-process/selectors';
 import { Reviews } from '../../types/review';
 import { getAuthStatus } from '../../store/user-process/selectors';
-import { AuthorizationStatus, NUMBER_OF_IMAGES } from '../../const';
+import { AuthorizationStatus, BookmarkPrefix, NUMBER_OF_IMAGES } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Bookmark } from '../bookmark/bookmark';
-import { BookmarkType } from '../bookmark/bookmark-prefix';
 import { switchFavoriteStatusInMainOffer } from '../../store/offer-process/offer-process';
 import { switchFavoriteStatusInOffers } from '../../store/offers-process/offers-process';
 import { ReviewForm } from '../review/review-form';
@@ -26,7 +25,7 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
   const currentCity = useAppSelector(getCurCity);
   const authStatus = useAppSelector(getAuthStatus);
 
-  const onMainOfferBookMarkClick = () =>{
+  const handleMainOfferBookMarkClick = () =>{
     dispatch(switchFavoriteStatusInMainOffer());
     dispatch(switchFavoriteStatusInOffers(mainOffer.id));
   };
@@ -75,8 +74,8 @@ export function MainOffer({mainOffer, offersNearBy, comments}: MainOfferProps) :
               {mainOffer.title}
             </h1>
             <Bookmark offerId={mainOffer.id} isActive={mainOffer.isFavorite}
-              width={31} height={33} bookmarkType={BookmarkType.Offer}
-              onBookmarkClick={onMainOfferBookMarkClick}
+              width={31} height={33} bookmarkType={BookmarkPrefix.Offer}
+              onBookmarkClick={handleMainOfferBookMarkClick}
             />
           </div>
           <div className="offer__rating rating">

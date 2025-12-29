@@ -41,7 +41,7 @@ function OfferPage() : JSX.Element {
     return <Navigate to={AppRoute.NotFound} replace/>;
   }
 
-  const onBookmarkClick = (nearByOfferId: string) => {
+  const handleBookmarkClick = (nearByOfferId: string) => {
     dispatch(switchFavoriteStatusInNearByOffer(nearByOfferId));
     dispatch(switchFavoriteStatusInOffers(nearByOfferId));
   };
@@ -56,7 +56,7 @@ function OfferPage() : JSX.Element {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OfferList offers={offersNearby} setActiveOfferFunc={() => {}} cardType={CardType.NearPlaces}
-              onBookmarkClick={onBookmarkClick}
+              onBookmarkClick={handleBookmarkClick}
             />
           </section>
         </div>

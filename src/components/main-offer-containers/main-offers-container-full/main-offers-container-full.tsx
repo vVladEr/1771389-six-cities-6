@@ -41,7 +41,7 @@ export function MainOffersContainerFull({currentCity, filteredOffers}: FullOffer
   }, [filteredOffers, currentSortType, currentCity]);
 
 
-  const onBookmarkClick = (offerId: string) => {
+  const handleBookmarkClick = (offerId: string) => {
     dispatch(switchFavoriteStatusInOffers(offerId));
   };
 
@@ -81,7 +81,7 @@ export function MainOffersContainerFull({currentCity, filteredOffers}: FullOffer
           </ul>
         </form>
         <OfferList offers={sortedOffers} setActiveOfferFunc={setActiveOfferId} cardType={CardType.Cities}
-          onBookmarkClick={onBookmarkClick}
+          onBookmarkClick={handleBookmarkClick}
         />
       </section>
       <div className="cities__right-section">

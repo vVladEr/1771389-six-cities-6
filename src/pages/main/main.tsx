@@ -14,7 +14,7 @@ function MainPage() : JSX.Element {
   const cities = useAppSelector(getAllCities);
   const filteredOffers = useAppSelector(getOffersByCity);
 
-  const onCityChange = (city: City) => {
+  const handleCityChange = (city: City) => {
     dispatch(changeCity(city));
   };
 
@@ -22,7 +22,7 @@ function MainPage() : JSX.Element {
     <div className="page page--gray page--main">
       <Header/>
       <main className={`page__main page__main--index ${filteredOffers.length === 0 ? 'page__main--index-empty' : ''}`}>
-        <CitiesList currentCity={currentCity} cities={cities} onCityChange={onCityChange} />
+        <CitiesList currentCity={currentCity} cities={cities} onCityChange={handleCityChange} />
         <div className="cities">
           {
             filteredOffers.length === 0 && <MainOffersContainerEmpty currentCity={currentCity}/>

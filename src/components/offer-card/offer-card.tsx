@@ -1,10 +1,9 @@
 import { generatePath, Link } from 'react-router-dom';
 import { CardOffer } from '../../types/offers';
 import { GetPersentsFromRating } from '../rating/rating';
-import { AppRoute } from '../../const';
+import { AppRoute, BookmarkPrefix } from '../../const';
 import { CardType, getCardClassName, getImageSizes, getImageWrapperClassName } from '../../types/card-types';
 import { Bookmark } from '../bookmark/bookmark';
-import { BookmarkType } from '../bookmark/bookmark-prefix';
 
 type OfferCardProps = {
   offer: CardOffer;
@@ -36,7 +35,7 @@ export function OfferCard({offer, onMouseOver, onMouseLeave, onBookmarkClick, ca
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <Bookmark offerId={offer.id} isActive={offer.isFavorite}
-            width={18} height={19} bookmarkType={BookmarkType.Card} onBookmarkClick={onBookmarkClick}
+            width={18} height={19} bookmarkType={BookmarkPrefix.Card} onBookmarkClick={onBookmarkClick}
           />
         </div>
         <div className="place-card__rating rating">

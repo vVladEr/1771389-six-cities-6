@@ -35,5 +35,10 @@ export enum NameSpaces {
   Favorites = 'FAVORITES',
 }
 
+export enum BookmarkPrefix {
+  Card = 'place-card',
+  Offer = 'offer'
+}
+
 export const NUMBER_OF_REVIEWS : number = 10;
 export const NUMBER_OF_IMAGES : number = 6;
