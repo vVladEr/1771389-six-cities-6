@@ -66,7 +66,7 @@ export const sendCommentAction = createAsyncThunk<void, ReviewFormData, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'comments/send',
+  'comment/send',
   async({offerId, comment, rating}, {dispatch, extra: api}) => {
     const parsedRating : number = Number(rating);
     await api.post<Review>(`${APIRoute.Comments }/${offerId}`, {comment, rating: parsedRating});
